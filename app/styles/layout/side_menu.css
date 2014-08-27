@@ -1,0 +1,206 @@
+/*test*/
+/*test*/
+/*//기본컨셉
+//사이드 메뉴 색상
+@side-top-color :#e3dddd;
+@side-middle-color :#d6cccc;
+@side-font-color : #222;
+
+@side-menu-color: @side-middle-color;
+@gradient-color:lighten(@side-middle-color,10%);
+
+//테이블 색상
+
+@th-color : #eee;   //th 색상
+@th-bot-color : @blue;  // 밑줄 색상
+@th-font:@grey;
+
+//버튼  색상
+
+@btn-bg-color: #47a447;
+@btn-border-color: darken(#47a447,10%);
+
+@sub-title:@blue;
+@bg-title:@basic-bg;*/
+/*//블루컨셉
+//사이드 메뉴 색상
+
+@side-top-color : @blue1;
+@side-middle-color : @blue;
+@side-font-color : #fff;
+
+@side-menu-color: @blue1;
+@gradient-color:@blue;
+@title:
+
+//테이블 색상
+
+@th-color : @th-blue;   //th 색상
+@th-bot-color : @blue;  // 밑줄 색상
+@th-font:@grey;
+
+//버튼  색상
+
+@btn-bg-color: @blue1;
+@btn-border-color: @blue;
+
+@sub-title:@blue;*/
+/*
+//올리브
+//사이드 메뉴 색상
+
+@side-top-color : @olive;
+@side-middle-color : @olive1;
+@side-font-color : #28171F;
+
+@side-menu-color: @olive1;
+@gradient-color:@olive;
+
+
+//테이블 색상
+
+@th-color : @olive-th;   //th 색상
+@th-bot-color : @olive;  // 밑줄 색상
+@th-font:@grey;
+
+
+//버튼  색상
+
+@btn-bg-color: @olive;
+@btn-border-color: @olive1;
+
+@sub-title:@olive;
+*/
+.side-header-footer {
+  margin: 5px;
+  color: #ffffff;
+  background-color: #37393b;
+  border: 8px solid transparent;
+  -moz-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Old firefox */
+
+  -webkit-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Safari */
+
+  -o-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Opera */
+
+  border-image: url("../../images/layout/border-all.png") 10 10 stretch;
+}
+.side-header-footer ul li a {
+  color: #ffffff;
+}
+.side-middle {
+  margin: 5px;
+  color: #ffffff;
+  background-color: #6f6f6f;
+  border: 8px solid transparent;
+  -moz-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Old firefox */
+
+  -webkit-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Safari */
+
+  -o-border-image: url("../../images/layout/border-all.png") 10 10 round;
+  /* Opera */
+
+  border-image: url("../../images/layout/border-all.png") 10 10 stretch;
+}
+.side-middle ul li a {
+  color: #ffffff;
+}
+.a-style {
+  /*.a-st2*/
+
+}
+/*//////////////////////////////////////////////////////*/
+.a-st1 {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  text-indent: 0;
+  background: #6f6f6f;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffc578 0%, #6f6f6f 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffc578), color-stop(100%, #fb9d23));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #898989 0%, #6f6f6f 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffc578', endColorstr='#fb9d23', GradientType=0);
+  /* IE6-9 */
+
+  border: 1px solid #ffffff;
+  font-family: arial;
+  font-size: 12px;
+  font-style: normal;
+  /*  height:50px;
+    line-height:50px;
+    width:100px;*/
+
+  text-decoration: none;
+}
+.a-st2 {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  text-indent: 0;
+  background: #6f6f6f;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffc578 0%, #6f6f6f 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffc578), color-stop(100%, #fb9d23));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #898989 0%, #6f6f6f 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #898989 0%, #6f6f6f 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffc578', endColorstr='#fb9d23', GradientType=0);
+  /* IE6-9 */
+
+  border: 0px solid #a2a2a2;
+  font-family: arial;
+  font-size: 12px;
+  font-style: normal;
+  /*  height:50px;
+    line-height:50px;
+    width:100px;*/
+
+  text-decoration: none;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+.menu-list > li.list-header-underline {
+  border-bottom: solid 1px white;
+  /*.a-st2*/
+
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

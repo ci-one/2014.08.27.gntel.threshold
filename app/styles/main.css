@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/NanumGothic.eot');
+    src: url('../fonts/NanumGothic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NanumGothic.woff') format('woff'),
+    url('../fonts/NanumGothic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/NanumGothicBold.eot');
+    src: url('../fonts/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NanumGothicBold.woff') format('woff'),
+    url('../fonts/NanumGothicBold.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Space out content a bit */
+body {
+    margin:0;
+    height:100%;
+    font-size:12px;
+}
+
+.container {
+    width: 1240px;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Customize container */
+/*@media (min-width: 1280px) {*/
+/*.container {*/
+/*max-width: 1240px;*/
+/*}*/
+/*}*/
+
+/* Responsive: Portrait tablets and up */
+/*@media screen and (min-width: 1280px) {
+    *//* Remove the padding we set earlier *//*
+    .header,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    *//* Space out the masthead *//*
+    .header {
+        margin-bottom: 30px;
+    }
+}*/
+
+.body-back-img {
+    background-image: url('../images/layout/bg-img.png');
+    /*background-repeat: repeat-x;*/
+    background-size: 100% auto;
+}
+
+.row {
+    margin: 0;
+}
+
+.horizontal-layout {
+    float: left;
+}
+
+.remove-padding {
+    padding: 0;
+
+}
+
+.remove-margin {
+    margin: 0;
+}
+
+.top-padding {
+    padding-top: 5px;
+}
+
+.bottom-padding {
+    padding-bottom: 5px;
+}
+
+.bottom-margin {
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.side-width {
+    width: 290px;
+}
+
+.contents-width {
+    /*width: 918px;*/
+    width: 914px;
+}

@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="../../../styles/layout/contents.css" xmlns="http://www.w3.org/1999/html">
+
+<div class="contents-layout" ng-controller="">
+<!-- title ▼ -->
+<div class="title-option">
+    　　　품질 측정-PROBE 목록
+</div>
+<!-- title ▲ -->
+
+<!-- contents ▼ -->
+<div class="contents-background contents-center" ng-controller="">
+
+    <!-- search ▼ -->
+    <div>
+        <table class="table tb-list remove-margin contents-center">
+            <tbody>
+            <tr>
+                <th class="list-header-option">이용 기관명</th>
+                <td>
+                    <select style="width: 100%">
+                        <option value="" selected>기관선택</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+                </td>
+                <th class="list-header-option">PROBE 전화번호</th>
+                <td><input type="text" size="20px" ng-model="search.dutyname"></td>
+                <td rowspan="2" class="list-header-option">
+                    <button class="btn btn-style" style="margin-top:10px" ng-click="trySearch()">검색</button>
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option">PROBE 이름</th>
+                <td colspan="3" style="text-align:left">
+                    <input type="text">
+               </td>
+            </tr>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="row" style="margin-top:15px">
+            <ul class="list-unstyled list-inline">
+                <li class="pull-right" ng-init="state='Y'; add=false;">
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- search ▲ -->
+
+    <!-- list ▼ -->
+    <div style="margin-top:15px;">
+        <table class="table tb-list table-bordered list-option">
+            <thead>
+            <tr class="list-header-option">
+                <th>
+                    이용기관명
+                </th>
+                <th>
+                    PROBE 명
+                </th>
+                <th>
+                    PROBE 전화번호
+                </th>
+                <th>
+                    연결 상태
+                </th>
+            </tr>
+            <tr>
+                <td>대림산업[수송동]</td>
+                <td>대림산업[수송동]</td>
+                <td>08998</td>
+                <td><img src="images/icon/probe_03.png" style="width:25px" alt="best"/></td>
+            </tr>>
+            </thead>
+            <tbody class="text-center list-contents-option">
+            <tr ng-repeat="item in filterItems= (items | orderBy:ordering())"
+                ng-if="currentPage*itemsPerPage <= $index && $index < (currentPage+1)*itemsPerPage">
+                <td>{{item['dutyname']}}</td>
+                <td>{{item['memberid']}}</td>
+                <td>{{item['useperiod']}}</td>
+                <td>{{item['comtel']}}</td>
+                <td>{{item['logincnt']}}회</td>
+                <td>{{item['logindate']}}</td>
+                <td>{{item['joindate']}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="list-unstyled list-inline pagenation-height text-center list-page">
+            <li>
+                <!-- ng-class="{disabled: currentPage < 10}" -->
+                <a href="" ng-click="prev10Page()">
+                    <span class="glyphicon glyphicon-backward"></span>
+                </a>
+            </li>
+            <li ng-class="{disabled: currentPage == 0}">
+                <a href="" ng-click="prevPage()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </li>
+            <li ng-repeat="n in range(currentPage-2, currentPage+3)"
+                ng-class="{active: n == currentPage}"
+                ng-click="setPage()">
+                <a href="" ng-bind="n + 1"></a>
+            </li>
+            <li ng-class="{disabled: (getPageMax() == 0 || currentPage == getPageMax() - 1)}">
+                <a href="" ng-click="nextPage()">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </li>
+            <li>
+                <!-- ng-class="{disabled: (getPageMax() == 0 || currentPage > getPageMax() - 11)}" -->
+                <a href="" ng-click="next10Page()">
+                    <span class="glyphicon glyphicon-forward"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <ul class="list-unstyled list-inline">
+            <li class="pull-right" ng-init="state='Y'; add=false;">
+                <button class="btn btn-style" ng-if="tabPage != '전체'" ng-click="action()">{{tabPage=='Y'?
+                    '사용안함':'사용함'}}
+                </button>
+                <button class="btn btn-style" ng-click="tryAdd();">사용 안함</button>
+                <button class="btn btn-style" ng-click="tryAdd();">추가</button>
+            </li>
+        </ul>
+    </div>
+    <!-- list ▲ -->
+</div>
+

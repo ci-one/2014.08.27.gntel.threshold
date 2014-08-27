@@ -1,0 +1,27 @@
+/* Custom page header */
+.header {
+}
+
+.header-config {
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    background-color: white;
+}
+
+.padding-logo {
+    padding: 2px;
+}
+
+.padding-menu {
+    padding: 10px;
+}
+
+.padding-menu > li > a {
+    color: black;
+    font-weight: 700;
+}
+
+.padding-menu > li > a:hover {
+    text-decoration: none !important;
+}

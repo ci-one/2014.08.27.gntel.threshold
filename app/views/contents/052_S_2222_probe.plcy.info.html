@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="../../../styles/layout/contents.css" xmlns="http://www.w3.org/1999/html">
+<!--052_S_probe_plcy_info-->
+<div class="contents-layout" ng-controller="">
+
+    <!-- contents ▼ -->
+    <div class="contents-background contents-center" ng-controller="">
+
+        <!-- search ▼ -->
+        <div>
+            <table class="table tb-list remove-margin contents-center">
+                <tbody>
+                <tr>
+                    <th class="list-header-option">정책 ID</th>
+                    <td>자동으로 생성됩니다.</td>
+                    <th class="list-header-option">정책 유형</th>
+                    <td>
+                        주기적 측정
+                    </td>
+
+                </tr>
+                <tr>
+                    <th class="list-header-option">시작일</th>
+                    <td>
+                        <div class="input-group input-group-sm input-group-search" searchType="joindate">
+
+                            <!-- calendar popup -->
+                            <div ng-if="showCal" ng-include="'views/partials/sidebar/calendar.html'"
+                                 style="position: absolute; top: 24px; left: 100px;"></div>
+
+                            <!-- search input -->
+                            <input type="text" class="form-control" ng-model="search.joindate">
+
+                            <!-- button -->
+                        <span class="input-group-btn">
+                            <button class="btn btn-default input-group-btn-custom"
+                                    type="button" ng-click="showCal = !showCal;" btnType="glyphicon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                            <button class="btn btn-default input-group-btn-custom" type="button" ng-click="trySearch()"
+                                    btnType="glyphicon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        </div>
+                    </td>
+                    <th class="list-header-option">종료일</th>
+                    <td>
+                        <div class="input-group input-group-sm" searchType="joindate">
+
+                            <!-- calendar popup -->
+                            <div ng-if="showCal" ng-include="'views/partials/sidebar/calendar.html'"
+                                 style="position: absolute; top: 24px; left: 100px;"></div>
+
+                            <!-- search input -->
+                            <input type="text" class="form-control" ng-model="search.joindate">
+
+                            <!-- button -->
+                        <span class="input-group-btn">
+                            <button class="btn btn-default input-group-btn-custom"
+                                    type="button" ng-click="showCal = !showCal;" btnType="glyphicon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                            <button class="btn btn-default input-group-btn-custom" type="button" ng-click="trySearch()"
+                                    btnType="glyphicon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list-header-option">시작시간</th>
+                    <td>11</td>
+                    <th class="list-header-option">종료시간</th>
+                    <td>11</td>
+
+                </tr>
+                <tr>
+                    <th class="list-header-option">제외 시작시간</th>
+                    <td>2</td>
+                    <th class="list-header-option">제외 종료시간</th>
+                    <td>2</td>
+
+                </tr>
+                <tr>
+                    <th class="list-header-option ">제외 요일</th>
+                    <td colspan="3" style="text-align:left">
+                        월 <input type="checkbox">
+                        화 <input type="checkbox">
+                        수 <input type="checkbox">
+                        목 <input type="checkbox">
+                        금 <input type="checkbox">
+                        토 <input type="checkbox">
+                        일 <input type="checkbox">
+                    </td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th class="list-header-option">측정 주기</th>
+                    <td colspan="3" style="text-align:left"></td>
+                </tr>
+                <tr>
+                    <th class="list-header-option">측정 횟수</th>
+                    <td colspan="3" style="text-align:left"></td>
+                </tr>
+                <tr>
+                    <th class="list-header-option">사용 유무</th>
+                    <td colspan="3" style="text-align:left">
+                        <select>
+                            <option value="" selected>사용함</option>
+                            <option value="">사용 안함</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:right">기본 설정<a href="#/probe/setting" target="_blank">기본값</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- search ▲ -->
+        <!-- contents ▲ -->
+    </div>

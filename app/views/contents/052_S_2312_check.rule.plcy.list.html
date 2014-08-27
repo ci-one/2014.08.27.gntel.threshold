@@ -1,0 +1,307 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>GNTEL - 대림산업</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="gntelCqmsApp" ng-controller="MainCtrl">
+
+<link rel="stylesheet" href="styles/layout/contents.css">
+
+<div ng-controller="userManageCtrl" class="contents-layout">
+
+<!-- title ▼ -->
+<div class="title-option">
+    주기적 측정 - 품질측정 정책현황 조회
+</div>
+<!-- title ▲ -->
+
+<!-- contents ▼ -->
+<div class="contents-background">
+
+<!-- search ▼ -->
+<table class="table tb-list remove-margin contents-center">
+    <tbody>
+    <tr>
+        <th class="list-header-option text-center" style="padding: 15px 0">
+            정책ID
+        </th>
+        <td>
+            <select ng-options="" class="form-control">
+                <option value="all">전체선택</option>
+            </select>
+        </td>
+        <th class="list-header-option text-center" style="padding: 15px 0">
+            사용 유무
+        </th>
+        <td style="padding: 15px 0">
+            {{'00:00'}} ~ {{'23:00'}}
+        </td>
+    </tr>
+    <tr>
+        <th class="list-header-option text-center" style="padding: 15px 0">
+            기간
+        </th>
+        <td>
+            <div class="row clearfix remove-margin">
+                <div class="input-group input-group-sm input-group-search form-inline" searchType="joindate"
+                     style="float:left">
+                    <!-- calendar popup -->
+                    <div ng-if="showCal1" ng-include="'views/partials/sidebar/calendar.html'"
+                         style="position: absolute; top: 24px; left: 100px;"></div>
+
+                    <!-- search input -->
+                    <input type="text" class="form-control" ng-model="search.joindate">
+
+                    <!-- button -->
+                        <span class="input-group-btn">
+                            <button class="btn btn-default input-group-btn-custom"
+                                    type="button" ng-click="showCal1 = !showCal1;" btnType="glyphicon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                        </span>
+                </div>
+                <span style="float:left">　~　</span>
+
+                <div class="input-group input-group-sm input-group-search form-inline" searchType="joindate"
+                     style="float:left">
+                    <!-- calendar popup -->
+                    <div ng-if="showCal2" ng-include="'views/partials/sidebar/calendar.html'"
+                         style="position: absolute; top: 24px; left: 100px;"></div>
+
+                    <!-- search input -->
+                    <input type="text" class="form-control" ng-model="search.joindate">
+
+                    <!-- button -->
+                        <span class="input-group-btn">
+                            <button class="btn btn-default input-group-btn-custom"
+                                    type="button" ng-click="showCal2 = !showCal2;" btnType="glyphicon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                        </span>
+                </div>
+            </div>
+        </td>
+        <td colspan="2">
+            <input type="button" class="btn btn-style" value="검색">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- search ▲ -->
+<p> </p>
+<!-- list ▼ -->
+<div style="height: 500px" class="contents-center">
+    <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
+        <thead>
+        <tr>
+            <th class="list-header-option">
+                전체선택<br>
+                <input type="checkbox">
+            </th>
+            <th class="list-header-option">
+                정책ID
+            </th>
+            <th class="list-header-option">
+                정책 유형
+            </th>
+            <th class="list-header-option">
+                시작일~종료일<br>
+                (제외 요일)
+            </th>
+            <th class="list-header-option">
+                시작 시간<br>
+                (제외 시작시간)
+            </th>
+            <th class="list-header-option">
+                종료 시간<br>
+                (제외 시작시간)
+            </th>
+            <th class="list-header-option">
+                측정 주기<br>
+                (초)
+            </th>
+            <th class="list-header-option">
+                측정 횟수
+            </th>
+            <th class="list-header-option">
+                측정 통화시간<br>
+                (초)
+            </th>
+
+        </tr>
+        </thead>
+        <tbody class="text-center list-contents-option">
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>
+                07822
+            </td>
+            <td>
+                주기적측정
+            </td>
+            <td>
+                2014.08.27
+            </td>
+            <td>
+                00:00
+            </td>
+            <td>
+                23:59
+            </td>
+            <td>
+                3600
+            </td>
+            <td>
+                1
+            </td>
+            <td>
+                30
+            </td>
+        </tr><tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>
+                07822
+            </td>
+            <td>
+                주기적측정
+            </td>
+            <td>
+                2014.08.27
+            </td>
+            <td>
+                00:00
+            </td>
+            <td>
+                23:59
+            </td>
+            <td>
+                3600
+            </td>
+            <td>
+                1
+            </td>
+            <td>
+                30
+            </td>
+        </tr><tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>
+                07822
+            </td>
+            <td>
+                주기적측정
+            </td>
+            <td>
+                2014.08.27
+            </td>
+            <td>
+                00:00
+            </td>
+            <td>
+                23:59
+            </td>
+            <td>
+                3600
+            </td>
+            <td>
+                1
+            </td>
+            <td>
+                30
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+<ul class="pagination">
+    <li>
+        <a href="#">Prev</a>
+    </li>
+    <li>
+        <a href="#">1</a>
+    </li>
+    <li>
+        <a href="#">2</a>
+    </li>
+    <li>
+        <a href="#">3</a>
+    </li>
+    <li>
+        <a href="#">4</a>
+    </li>
+    <li>
+        <a href="#">5</a>
+    </li>
+    <li>
+        <a href="#">Next</a>
+    </li>
+</ul>
+</div>
+
+<!-- list ▲ -->
+</div>
+<div class="row clearfix">
+    <div class="pull-right">
+        <button type="button" class="btn btn-style" style="margin: 15px 15px;" ng-click="">기준 값 설정
+        </button>
+        <button type="button" class="btn btn-style" ng-click="">R등급 확인
+        </button>
+    </div>
+</div>
+<!-- contents ▲ -->
+</div>
+
+
+<!-- build:js(app) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/services/code.services.js"></script>
+<script src="scripts/services/user.manage.services.js"></script>
+<script src="scripts/services/user.access.services.js"></script>
+<script src="scripts/services/user.org.services.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/user.manage.controller.js"></script>
+<script src="scripts/controllers/user.access.controller.js"></script>
+<script src="scripts/controllers/user.org.controller.js"></script>
+<!-- endbuild -->
+</body>
+</html>

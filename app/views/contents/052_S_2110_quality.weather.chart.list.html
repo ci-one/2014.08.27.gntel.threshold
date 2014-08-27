@@ -1,0 +1,525 @@
+<link rel="stylesheet" href="styles/layout/contents.css">
+<link rel="stylesheet" href="styles/layout/contents.less">
+
+<div style="overflow-y: scroll; height: 569px; width:100%">
+    <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
+        <thead>
+        <tr>
+            <th rowspan="2" class="list-header-option">
+                이용기관(수신지)<br/>[송신지 : 본청] ▼
+            </th>
+            <th colspan="3" class="list-header-option" style="border-bottom:0;">
+                R값
+            </th>
+            <th colspan="3" class="list-header-option" style="border-bottom:0;">
+                MOS
+            </th>
+        </tr>
+        <tr>
+            <th class="list-header-option">금일</th>
+            <th class="list-header-option">전일</th>
+            <th class="list-header-option">전일비</th>
+            <th class="list-header-option">금일</th>
+            <th class="list-header-option">전일</th>
+            <th class="list-header-option">전일비</th>
+        </tr>
+        </thead>
+        <tbody class="text-center list-contents-option">
+        <!-- ng-repeat="item in items"-->
+<!--        <tr>
+            <td>
+
+                <img src="{{'images/icon/weather/grade' + '/*grade1~5(1:best)*/1' + '.png'}}" style="width:20px"/>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+            <td>
+                {{item['field']}}
+            </td>
+        </tr>-->
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                f1
+            </td>
+            <td>
+                <img src="images/icon/weather/grade2.png" style="width:20px"/>
+                f2
+            </td>
+            <td>
+                <img src="images/icon/weather/grade1.png" style="width:20px"/>
+                f3
+            </td>
+            <td>
+                f4
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+                <img src="images/icon/weather/grade4.png" style="width:20px"/>
+                f5
+            </td>
+            <td>
+                <img src="images/icon/weather/grade5.png" style="width:20px"/>
+                f6
+            </td>
+            <td>
+                f7
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+        </tr>
+        <tr><!-- ng-if="items.length == 0" -->
+            <td colspan="7">
+                조회된 데이터가 없습니다.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

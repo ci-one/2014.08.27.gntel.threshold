@@ -1,0 +1,267 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>R등급 확인[R값 임계치 확인]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/layout/contents.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="gntelCqmsApp" ng-controller="">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<!-- contents ▼ -->
+<div class="contents-layout">
+    <!-- title ▼ -->
+    <div class="subtitle">
+        　　　R등급 확인[R값 임계치 확인]
+    </div>
+    <!-- title ▲ -->
+
+    <!-- sub title1 ▼ -->
+    <div class="">
+        <img src="images/icon/bullet01.png">
+        　안내
+    </div>
+    <!-- sub title1 ▲ -->
+
+    <!-- contents1 ▼ -->
+    <table class="table tb-list table-bordered table-bordered list-option" style="margin-top: 5px">
+        <tr>
+            <td class="list-contents-option">
+                품질측정 결과에 대한 평가를 위한 RValue 임계치(범위)를 확인할 수 있습니다.
+            </td>
+        </tr>
+    </table>
+    <!-- contents1 ▲ -->
+
+    <!-- sub title2 ▼ -->
+    <div class="" style="margin-top: 15px">
+        <img src="images/icon/bullet01.png">
+        　용어설명
+    </div>
+    <!-- sub title2 ▲ -->
+
+    <!-- contents2 ▼ -->
+    <table class="table tb-list table-bordered table-bordered list-option" style="margin-top: 5px">
+        <tr>
+            <th class="list-header-option">
+                R 값
+            </th>
+            <td class="list-contents-option">
+                E-Model에 근거하여 산출된 음성통화 품질지수로서,<br/>
+                지연시간, 패킷 손실율, 코덱 및 기타 파라미터 값의 측정을 통해 계산되며, 0~100 사이의 값을 가짐.<br/>
+                (100에 가까울수록 높은 통화 품질)
+            </td>
+        </tr>
+        <tr>
+            <th class="list-header-option">
+                MOS
+            </th>
+            <td class="list-contents-option">
+                실제 음성통화를 한 사용자들이 평가한 통화 품질의 평균 값으로, 1~5사이의 값을 가짐.<br/>
+                (5에 가까울수록 높은 통화 품질)
+            </td>
+        </tr>
+    </table>
+    <!-- contents2 ▲ -->
+
+    <!-- sub title3 ▼ -->
+    <div class="" style="margin-top: 15px">
+        <img src="images/icon/bullet01.png">
+        　R값에 따른 사용자 만족도
+    </div>
+    <!-- sub title3 ▲ -->
+
+    <!-- contents3 ▼ -->
+    <table class="table tb-list table-bordered table-bordered list-option text-center" style="margin-top: 5px">
+        <thead>
+        <tr>
+            <th class="list-header-option">
+                R 값의 범위
+            </th>
+            <th class="list-header-option">
+                음성전송 품질 목록
+            </th>
+            <th class="list-header-option">
+                사용자 만족도
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="list-contents-option">
+                90 <= R < 100
+            </td>
+            <td class="list-contents-option">
+                최고
+            </td>
+            <td class="list-contents-option">
+                매우 만족
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                80 <= R < 90
+            </td>
+            <td class="list-contents-option">
+                높음
+            </td>
+            <td class="list-contents-option">
+                만족
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                70 <= R < 80
+            </td>
+            <td class="list-contents-option">
+                중간
+            </td>
+            <td class="list-contents-option">
+                약간의 불만족
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                60 <= R < 70
+            </td>
+            <td class="list-contents-option">
+                낮음
+            </td>
+            <td class="list-contents-option">
+                많은 불만족
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                50 <= R < 60
+            </td>
+            <td class="list-contents-option">
+                최저
+            </td>
+            <td class="list-contents-option">
+                모든 사용자가 불만족
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- contents3 ▲ -->
+
+    <!-- sub title4 ▼ -->
+    <div class="" style="margin-top: 15px">
+        <img src="images/icon/bullet01.png">
+        　R값과 MOS의 상관관계
+    </div>
+    <!-- sub title4 ▲ -->
+
+    <!-- contents4 ▼ -->
+    <table class="table tb-list table-bordered table-bordered list-option text-center" style="margin-top: 5px">
+        <thead>
+        <tr>
+            <th class="list-header-option">
+                R 값
+            </th>
+            <th class="list-header-option">
+                MOS 값
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="list-contents-option">
+                90
+            </td>
+            <td class="list-contents-option">
+                4.34
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                80
+            </td>
+            <td class="list-contents-option">
+                4.03
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                70
+            </td>
+            <td class="list-contents-option">
+                3.60
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                60
+            </td>
+            <td class="list-contents-option">
+                3.10
+            </td>
+        </tr>
+        <tr>
+            <td class="list-contents-option">
+                50
+            </td>
+            <td class="list-contents-option">
+                2.58
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- contents4 ▲ -->
+
+    <button class="btn btn-style pull-right" onclick="window.close();">
+        확인
+    </button>
+
+</div>
+<!-- contents ▲ -->
+
+<!-- build:js(app) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>

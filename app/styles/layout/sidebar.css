@@ -1,0 +1,128 @@
+.box-shadow{box-shadow: 3px 3px 3px #777777;}
+
+.sidebar {
+    font-size: 13px;
+    background-color: white;
+}
+
+.info-text-box {
+    width: 100%;
+    height: 26px;
+
+    padding: 2px 0;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 5px;
+
+    font-weight: 700;
+    background-color: white;
+    color: #2f3aa5;
+
+    -webkit-box-shadow: inset 5px 5px 3px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 5px 5px 3px 0px rgba(0,0,0,0.25);
+    box-shadow: inset 5px 5px 3px 0 rgba(0,0,0,0.25);
+}
+
+.info-text-lg {
+    font-size: 16px;
+}
+
+.info-time {
+    color: goldenrod;
+}
+
+.side-layout-option-top {
+    margin: 5px;
+    margin-top:0;
+    padding: 5px;
+}
+
+.side-layout-option-bottom {
+    margin: 5px;
+
+
+}
+
+.side-layout-inner {
+    margin: 5px;
+
+    color: white;
+    background-color: #343638;
+
+    border: 8px solid transparent;
+    -moz-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Old firefox */
+    -webkit-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Safari */
+    -o-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Opera */
+    border-image:url("../../images/layout/border-all.png") 10 10 stretch;
+}
+
+/*세로로 붙는 메뉴의 헤더 부분*/
+.menu-header {
+    width: 36px;
+
+    border: solid yellow 1px;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 0 7px;
+    font-size: 18px;
+
+    -webkit-box-shadow: 3px 3px 1px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 1px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 1px 0 rgba(0,0,0,0.75);
+
+    text-align: center;
+}
+
+.menu-item {
+    width: 173px;
+    margin: 5px;
+    margin-left:15px;
+}
+
+.menu-header-big {
+    padding: 5em 0;
+    margin-top: 18px;
+}
+
+
+.menu-list > li.list-header {
+    font-size: 1em;
+    padding: 5px;
+    margin-top:5px;
+}
+.menu-list > li.list-header:first-child{margin-top:0;}
+/*.menu-list > li.list-header-underline {
+    border-bottom: solid 1px #999;
+}*/
+.list-header_admin{
+    padding:3px;
+}
+
+.menu-list > li.list-item {
+    font-size:1em;
+    padding: 1px;
+    padding-left: 15px;
+    line-height:1.6;
+}
+
+.menu-list > li.top-padding {
+    padding-top: 5px;
+}
+
+
+
+.menu-list > li > a:hover {
+    text-decoration: none !important;
+}
+.menu-item-small{margin-top:10px;}
+
+
+
+
+.calendar {
+    width: 214px;
+}
+
+.calendar-padding {
+    padding: 5px;
+}

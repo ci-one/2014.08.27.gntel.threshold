@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="/styles/layout/contents.css" xmlns="http://www.w3.org/1999/html">
+
+<div class="contents-layout" ng-controller="">
+
+    <!-- contents ▼ -->
+    <div class="list-header-option"><span class="text3" >　임계치 품질 기준항목 등록.수정.삭제</span></div>
+    <table class="table tb-list remove-margin contents-center">
+        <tbody>
+        <tr>
+            <th class="list-header-option text-center">
+                임계치 관리항목
+            </th>
+            <td>
+                음성품질 R값
+            </td>
+            <th class="list-header-option text-center">
+                품질 등급
+            </th>
+            <td>
+                Fatal
+            </td>
+        </tr>
+        <tr>
+            <th class="list-header-option text-center">
+                기준 항목　
+            </th>
+            <td>
+                <select ng-options="" class="form-control">
+                    <option>기준항목 코드 | 기준항목 명</option>
+                    <option value="all">01 | R<60</option>
+                    <option value="all">02 | 60<=R<70</option>
+                    <option value="all">03 | 3회</option>
+                    <option value="all">◎ 신규등록</option>
+                </select>
+            </td>
+            <td colspan="2" rowspan="2">
+                <button type="button" class="btn btn-style" style="margin: 15px 15px;" ng-click="">저장
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th class="list-header-option text-center">
+                기준값
+            </th>
+            <td>
+                <select ng-options="" class="form-control">
+                    <option>기준항목 코드 | 기준항목 명</option>
+                    <option value="all">1 | 음성품질 R</option>
+                    <option value="all">2 | 횟수</option>
+                    <option value="all">◎ 신규등록</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <p></p>
+    <!-- list ▼ -->
+    <div>
+        <div class="row clearfix list-header-option">
+            <div style="float:left;">
+             <span class="text3" >　임계치 품질 기준항목 등록 현황</span>
+            </div>
+            <div class="pull-right" style="float:left;">
+                <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                </button>
+            </div>
+        </div>
+        <div style="overflow-y: scroll;height: 200px">
+            <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
+                <thead>
+                <tr>
+                    <th class="list-header-option">
+                        임계치 관리 항목 ▣
+                    </th>
+                    <th class="list-header-option">
+                        품질 항목 ▣
+                    </th>
+                    <th class="list-header-option">
+                        기준항목
+                    </th>
+                    <th class="list-header-option">
+                        기준값
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="text-center list-contents-option">
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Fatal
+                    </td>
+                    <td>
+                        R 값
+                    </td>
+                    <td>
+                        R<60
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Critical
+                    </td>
+                    <td>
+                        횟수
+                    </td>
+                    <td>
+                        3회
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Major
+                    </td>
+                    <td>
+                        R 값
+                    </td>
+                    <td>
+                        60<=R<70
+                    </td>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Critical
+                    </td>
+                    <td>
+                        횟수
+                    </td>
+                    <td>
+                        3회
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Major
+                    </td>
+                    <td>
+                        R 값
+                    </td>
+                    <td>
+                        60<=R<70
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <!-- list ▲ -->
+    </div>
+    <div class="row clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-style" ng-click="">삭제
+            </button>
+            <button type="button" class="btn btn-style" ng-click="">열람
+            </button>
+        </div>
+    </div>
+    <!-- search ▲ -->
+    <!-- contents ▲ -->
+</div>

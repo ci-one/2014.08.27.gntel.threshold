@@ -71,6 +71,11 @@
 
 @sub-title:@olive;
 */
+.text3 {
+    font-weight: bold;
+    font-size: 15px;
+    color: #fffba3;
+}
 .btn-style {
   color: white;
   background-color: #6a1111;
@@ -319,5 +324,9 @@ table > tbody > tr > td {
 .gly-up {
   color: #ff0000;
 }
-
+.ccolor {
+    color: white;
+    background-color: #34476a;
+    border: 5px outset #20203e;
+}
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

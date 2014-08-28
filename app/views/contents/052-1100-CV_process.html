@@ -1,0 +1,42 @@
+<script src="plugin/highcharts.js"></script>
+<script src="plugin/exporting.js"></script>
+
+<link rel="stylesheet" href="styles/layout/contents.css">
+
+<div ng-controller="userManageCtrl" class="contents-layout">
+
+    <!-- title ▼ -->
+    <div class="title-option">
+        　　　■ 임계치 처리 현황
+    </div>
+    <!-- title ▲ -->
+
+    <!-- contents ▼ -->
+    <div class="contents-background">
+        <div class="row clearfix list-header-option">
+            <span class="text3" >　임계치 처리현황</span>
+
+            <div class="pull-right">
+                <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                </button>
+            </div>
+        </div>
+        <!-- search ▼ -->
+        <iframe src="/views/contents/052-1110-CV_process.list.html" style="width:850px;height:320px;"></iframe>
+        <!-- search ▲ -->
+        <p></p>
+        <!-- icon info ▼ -->
+        <div class="row clearfix list-header-option">
+            <span class="text3" >　발생항목 코멘트 처리내역</span>
+
+            <div class="pull-right">
+                <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                </button>
+            </div>
+        </div>
+        <!-- search ▼ -->
+        <iframe src="/views/contents/052-1110-CV_processed.list.html" style="width:850px;height:320px;"></iframe>
+    </div>
+
+    <!-- contents ▲ -->
+</div>

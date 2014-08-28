@@ -499,6 +499,7 @@
 <script>
     $(document).ready(function () {
         $('#myTable').dataTable( {
+            "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
             "dom": '<"top"i>rt<"bottom"pf><"clear">'
         });
     });

@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body style="text-align: center; width: 820px">
+<p></p>
 <div>
-    <div class="row clearfix">
-        <div class="pull-right">
+    <div class="row clearfix list-header-option">
+        <div>
             <button type="button" class="btn btn-style" ng-click="">전체
             </button>
             <button type="button" class="btn btn-style" ng-click="">연도별
@@ -12,24 +21,30 @@
             <button type="button" class="btn btn-style" ng-click="">일별
             </button>
         </div>
+
     </div>
-    <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-    <script type="text/javascript">
-        $(function () {
-            $('#container2').highcharts({
-                chart: {
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: '측정결과[차트]'
-                },
-                subtitle: {
-                    text: 'http://ci-one.co.kr'
-                },
-                xAxis: [{
+    <div id="container2" style="min-width: 240px; height: 400px; margin: 0 auto"></div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/plugin/highcharts.js"></script>
+<script src="/plugin/exporting.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#container2').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: [
+                {
                     categories: ['MOB', 'DELAY', 'TX손실율', 'RX손실율', 'TX JITTER', 'RX JITTER']
-                }],
-                yAxis: [{ // Primary yAxis
+                }
+            ],
+            yAxis: [
+                { // Primary yAxis
                     labels: {
                         style: {
                             color: Highcharts.getOptions().colors[1]
@@ -41,7 +56,8 @@
                             color: Highcharts.getOptions().colors[1]
                         }
                     }
-                }, { // Secondary yAxis
+                },
+                { // Secondary yAxis
                     title: {
                         text: '측정값',
                         style: {
@@ -54,20 +70,22 @@
                         }
                     },
                     opposite: true
-                }],
-                tooltip: {
-                    shared: true
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    x: 120,
-                    verticalAlign: 'top',
-                    y: 100,
-                    floating: true,
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-                },
-                series: [{
+                }
+            ],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 100,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+            },
+            series: [
+                {
                     name: '평균',
                     type: 'column',
                     yAxis: 1,
@@ -76,25 +94,29 @@
                         valueSuffix: ' mm'
                     }
 
-                }, {
+                },
+                {
                     name: '최대',
                     type: 'spline',
                     data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5],
                     tooltip: {
                         valueSuffix: '°C'
                     }
-                }, {
+                },
+                {
                     name: '최소',
                     type: 'spline',
-                    color:'#FFE400',
+                    color: '#FFE400',
                     data: [6.0, 6.3, 8.5, 10.5, 15.2, 17.5],
                     tooltip: {
                         valueSuffix: '°C'
                     }
-                }]
-            });
+                }
+            ]
         });
+    });
 
 
-    </script>
-</div>
+</script>
+</body>
+</html>

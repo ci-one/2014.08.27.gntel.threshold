@@ -1,0 +1,181 @@
+<link rel="stylesheet" href="styles/layout/contents.css">
+
+<div ng-controller="processCtrl" class="contents-layout">
+
+    <!-- title ▼ -->
+    <div class="title-option">
+        　　　액션 코멘트 관리
+    </div>
+    <!-- title ▲ -->
+    <div class="contents-background">
+        <!-- list ▼ -->
+        <div style="">
+            <div class="row clearfix list-header-option">
+                <div style="float:left;">
+                <span class="text3" >　액션 코멘트 등록 현황</span>
+                </div>
+                <div class="pull-right" style="float:left;">
+                    <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                    </button>
+                </div>
+            </div>
+            <div  style="overflow-y: scroll;height: 150px">
+            <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
+                <thead>
+                <tr>
+                    <th class="list-header-option">
+                        임계치 관리 항목 ▣
+                    </th>
+                    <th class="list-header-option">
+                        품질 항목 ▣
+                    </th>
+                    <th class="list-header-option">
+                        액션 명 ▣
+                    </th>
+                    <th class="list-header-option">
+                        코멘트 형태
+                    </th>
+                    <th class="list-header-option">
+                        코멘트 내용
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="text-center list-contents-option">
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Fatal
+                    </td>
+                    <td>
+                        경보
+                    </td>
+                    <td>
+                        파일
+                    </td>
+                    <td>
+                        텍스트 파일명
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Critical
+                    </td>
+                    <td>
+                        경보
+                    </td>
+                    <td>
+                        파일
+                    </td>
+                    <td>
+                        텍스트 파일명
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Major
+                    </td>
+                    <td>
+                        문자발송
+                    </td>
+                    <td>
+                        파일
+                    </td>
+                    <td>
+                        텍스트 파일명
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        음성품질 R값
+                    </td>
+                    <td>
+                        Minor
+                    </td>
+                    <td>
+                        이메일전송
+                    </td>
+                    <td>
+                        파일
+                    </td>
+                    <td>
+                        텍스트 파일
+                    </td>
+                </tr>
+                </tbody>
+
+            </table></div><p></p>
+            <div class="row clearfix">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-style" ng-click="">삭제
+                    </button>
+                    <button type="button" class="btn btn-style" ng-click="">열람
+                    </button>
+                    <button type="button" class="btn btn-style" ng-click="">수정
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+        <div class="list-header-option"><span class="text3" >　액션 코멘트 등록.수정.삭제</span></div>
+        <table class="table tb-list remove-margin contents-center">
+            <tbody>
+            <tr>
+                <th class="list-header-option text-center">
+                    임계치 관리항목
+                </th>
+                <td>
+                    음성품질 R값
+                </td>
+                <th class="list-header-option text-center">
+                    품질 등급
+                </th>
+                <td>
+                    Fatal
+                </td>
+                <th class="list-header-option text-center">
+                    액션 명
+                </th>
+                <td>
+                    경보
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">
+                    코멘트 형태
+                </th>
+                <td>
+                    <input type="text" placeholder="메세지/음성">
+                </td>
+                <th class="list-header-option text-center">
+                    음성파일
+                </th>
+                <td colspan="3">
+                    <input type="file">
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">
+                    메세지 내용 작성
+                </th>
+                <td colspan="4">
+                    <textarea style="width: 100%"></textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-style" ng-click="">저장
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- contents ▲ -->
+</div>

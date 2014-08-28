@@ -10,94 +10,46 @@ angular.module('gntelCqmsApp', [
                 templateUrl: 'views/contents/052_M_1000_login.html'
             })
             .when('/home', {
-                redirectTo: '/quality/weather_chart'
+                redirectTo: '/happen'
             })
             .when('/login', {
-                redirectTo: '/quality/weather_chart'
+                redirectTo: '/happen'
             }).when('/loginadd', {
                 redirectTo: 'views/contents/052_S_1100_user.add.html'
             })
-            .when('/quality/weather_chart', {
-                templateUrl: 'views/contents/052_S_2100_quality.weather.chart.html'
+            .when('/happen', {
+                templateUrl: 'views/contents/052-1000-CV_happen.html'
             })
-            .when('/probe/list', {
-                templateUrl: '../views/contents/CHAE/052_S_2221_probe.plcy.setting.default.html'
+            .when('/process', {
+                templateUrl: 'views/contents/052-1100-CV_process.html'
             })
-
-
-
-
-            //추가:김선규
-            .when('/priodic', {
-                templateUrl: 'views/contents/052_S_2310_check.priodic.html'
+            .when('/standard', {
+                templateUrl: 'views/contents/052-1200-CV_standard.html'
             })
-            .when('/priodic/result', {
-                templateUrl: 'views/contents/052_S_2311_check.probe.plcy.info.html'
+            .when('/action', {
+                templateUrl: 'views/contents/052-1210-CV_action_reg.html'
             })
-            .when('/priodic/plcy', {
-                templateUrl: 'views/contents/052_S_2312_check.rule.plcy.list.html'
+            .when('/detail', {
+                templateUrl: 'views/contents/052-1230-CV_detail_reg.html'
             })
-            .when('/demand', {
-                templateUrl: 'views/contents/052_S_2320_check.demand.html'
+            .when('/commnetl', {
+                templateUrl: 'views/contents/052-1300-CV_commnetl.html'
             })
-            .when('/demand/process', {
-                templateUrl: 'views/contents/052_S_2321_check.demand.process.html'
+            .when('/reg', {
+                templateUrl: 'views/contents/052-1400-CV_reg.html'
             })
-            .when('/demand/result', {
-                templateUrl: 'views/contents/052_S_2322_check.demand.result.html'
+            .when('/reg/site', {
+                templateUrl: 'views/contents/052-1410-CV_site_reg.html'
             })
-            .when('/current', {
-                templateUrl: 'views/contents/052_S_2400_check.current.list.html'
+            .when('/reg/sitem', {
+                templateUrl: 'views/contents/052-1420-CV_sitem_reg.html'
             })
-            .when('/current/plcy', {
-                templateUrl: 'views/contents/052_S_2410_check.current.plcy.info.html'
-            })
-            .when('/priodicR', {
-                templateUrl: 'views/contents/052_S_2520_result.priodic.html'
-            })
-            .when('/priodicavg', {
-                templateUrl: 'views/contents/052_S_2530_result.priodic.avg.list.html'
-            })
-            //종료:김선규
-
-
-
-            //추가:채영범
-            .when('/probe/list', {
-                templateUrl: '../views/contents/052_S_2210_probe.list.html'
-            })
-            .when('/probe/setting', {
-                templateUrl: '../views/contents/052_S_2211_probe.setting.default.html'
-            })
-            .when('/probe/info', {
-                templateUrl: '../views/contents/052_S_2212_probe.info.html'
-            })
-            .when('/poly/list', {
-                templateUrl: '../views/contents/052_S_2220_probe.plcy.list.html'
-            })
-            .when('/poly/info', {
-                templateUrl: '../views/contents/052_S_2222_probe.plcy.info.html'
-            })
-            .when('/poly/setting', {
-                templateUrl: '../views/contents/052_S_2221_probe.plcy.setting.default.html'
-            })
-            .when('/probe/search', {
-                templateUrl: '../views/contents/052_S_2301_quality.check.search.probe.html'
-            })
-            //종료:채영범
-
-            .when('/admin/user', {
-                templateUrl: 'views/contents/052_S_3100_admin.user.html'
-            })
-            .when('/admin/access', {
-                templateUrl: 'views/contents/052_S_3200_admin.access.html'
-            })
-            .when('/admin/org', {
-                templateUrl: 'views/contents/052_S_3300_admin.org.html'
+            .when('/manager', {
+                templateUrl: 'views/contents/052-1500-CV_manager_reg.html'
             })
             .otherwise({
                 redirectTo: '/'
             });
 
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
     });

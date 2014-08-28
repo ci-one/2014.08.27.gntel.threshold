@@ -1,22 +1,25 @@
-@font-face {
-    font-family: 'Nanum Gothic';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/NanumGothic.eot');
-    src: url('../fonts/NanumGothic.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/NanumGothic.woff') format('woff'),
-    url('../fonts/NanumGothic.ttf') format('truetype');
-}
+/*@font-face {*/
+    /*font-family: 'Nanum Gothic';*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: url('../fonts/NanumGothic.eot');*/
+    /*src: url('../fonts/NanumGothic.eot?#iefix') format('embedded-opentype'),*/
+    /*url('../fonts/NanumGothic.woff') format('woff'),*/
+    /*url('../fonts/NanumGothic.ttf') format('truetype');*/
+/*}*/
 
-@font-face {
-    font-family: 'Nanum Gothic';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/NanumGothicBold.eot');
-    src: url('../fonts/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/NanumGothicBold.woff') format('woff'),
-    url('../fonts/NanumGothicBold.ttf') format('truetype');
-}
+/*@font-face {*/
+    /*font-family: 'Nanum Gothic';*/
+    /*font-style: normal;*/
+    /*font-weight: 700;*/
+    /*src: url('../fonts/NanumGothicBold.eot');*/
+    /*src: url('../fonts/NanumGothicBold.eot?#iefix') format('embedded-opentype'),*/
+    /*url('../fonts/NanumGothicBold.woff') format('woff'),*/
+    /*url('../fonts/NanumGothicBold.ttf') format('truetype');*/
+/*}*/
+
+
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 
 * {
     font-family: 'Nanum Gothic', sans-serif;

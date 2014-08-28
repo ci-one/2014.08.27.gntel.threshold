@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="styles/layout/contents.css">
+
+<div ng-controller="regCtrl" class="contents-layout">
+
+    <!-- title ▼ -->
+    <div class="title-option">
+        　　　이용자 등록 관리
+    </div>
+    <!-- title ▲ -->
+    <div class="contents-background">
+        <div class="row clearfix list-header-option">
+            <div>
+                <div ng-if="processGo=='기관'" style="float: left">
+                    <button type="button" class="btn btn-style" ng-click="change('기관')">이용기관 등록</button>
+                </div>
+                <div ng-if="processGo!='기관'" style="float: left">
+                    <button type="button" class="btn ccolor" ng-click="change('기관')">이용기관 등록</button>
+                </div>
+                <div ng-if="processGo=='현장'" style="float: left">
+                    <button type="button" class="btn btn-style" ng-click="change('현장')">이용기관 현장 등록</button>
+                </div>
+                <div ng-if="processGo!='현장'" style="float: left">
+                    <button type="button" class="btn ccolor" ng-click="change('현장')">이용기관 현장 등록</button>
+                </div>
+                <div ng-if="processGo=='담당'" style="float: left">
+                    <button type="button" class="btn btn-style" ng-click="change('담당')">이용기관 담당 등록</button>
+                </div>
+                <div ng-if="processGo!='담당'" style="float: left">
+                    <button type="button" class="btn ccolor" ng-click="change('담당')">이용기관 담당 등록</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div ng-if="processGo=='기관'">
+            <div style="border: 1px groove" ng-include="'views/contents/052-1401-CV_comp_reg.html'"></div>
+        </div>
+        <div ng-if="processGo=='현장'">
+            <div style="border: 1px groove" ng-include="'views/contents/052-1410-CV_site_reg.html'"></div>
+        </div>
+        <div ng-if="processGo=='담당'">
+            <div style="border: 1px groove" ng-include="'views/contents/052-1420-CV_sitem_reg.html'"></div>
+        </div>
+    </div>
+    <!-- contents ▲ -->
+</div>

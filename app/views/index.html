@@ -17,7 +17,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -44,15 +44,15 @@
     <div class="row clearfix" ng-include="'views/partials/052_S_0100_header.html'">
     </div>
     <div class="body-back-img">
-    <div class="container">
-        <div class="row clearfix">
-            <div class="horizontal-layout side-width" ng-include="'views/partials/052_S_0200_sidebar.html'">
-            </div>
-            <div class="horizontal-layout contents-width contents" ng-view="contents">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="horizontal-layout side-width" ng-include="'views/partials/052_S_0200_sidebar.html'">
+                </div>
+                <div class="horizontal-layout contents-width contents" ng-view="contents">
+                </div>
             </div>
         </div>
     </div>
-</div>
     <div class="row clearfix" ng-include="'views/partials/052_S_0300_footer.html'">
     </div>
 </div>
@@ -67,20 +67,16 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/services/code.services.js"></script>
-<script src="scripts/services/user.manage.services.js"></script>
-<script src="scripts/services/user.access.services.js"></script>
-<script src="scripts/services/user.org.services.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/user.manage.controller.js"></script>
-<script src="scripts/controllers/user.access.controller.js"></script>
-<script src="scripts/controllers/user.org.controller.js"></script>
+<script src="scripts/controllers/processCtrl.js"></script>
+<script src="scripts/controllers/regCtrl.js"></script>
+
 
 <!-- endbuild -->
 </body>

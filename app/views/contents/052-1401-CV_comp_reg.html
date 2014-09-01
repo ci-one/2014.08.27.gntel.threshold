@@ -15,7 +15,19 @@
                     </button>
                 </div>
             </div>
-            <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table table-striped table-bordered"></table>
+            <table ng-table="tableParams" class="table">
+                <tr ng-repeat="user in $data">
+                    <td data-title="'이용기관 명'" sortable="'org_name'">
+                        {{user.org_name}}
+                    </td>
+                    <td data-title="'이용 기관 시군구'" sortable="'city_name'">
+                        {{user.city_name}}
+                    </td>
+                    <td data-title="'이용기관 전화번호'" sortable="'org_tel'">
+                        {{user.org_tel}}
+                    </td>
+                </tr>
+            </table>
             <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
                 <thead>
                 <tr>

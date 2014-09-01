@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('gntelCqmsApp', [
+var app = angular.module('gntelCqmsApp', [
     'ngRoute',
     'ui.bootstrap'
-])
-    .config(function ($routeProvider, $locationProvider) {
+]);
+app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/contents/052_M_1000_login.html'
@@ -53,3 +53,22 @@ angular.module('gntelCqmsApp', [
 
         $locationProvider.html5Mode(true);
     });
+
+app.directive('ngConfirmClick', [
+    function(){
+        return {
+            priority: -1,
+            restrict: 'A',
+            link: function(scope, element, attrs){
+                element.bind('click', function(e){
+                    var message = attrs.ngConfirmClick;
+                    if(message && !confirm(message)){
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }
+                });
+            }
+        }
+    }
+]);
+

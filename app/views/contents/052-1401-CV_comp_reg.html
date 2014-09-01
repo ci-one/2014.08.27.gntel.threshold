@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="styles/layout/contents.css">
 
-<div class="contents-layout">
+<div class="contents-layout" ng-controller="compRegCtrl">
 
     <div class="contents-background">
         <!-- list ▼ -->
         <div style="overflow-y: hidden;">
             <div class="row clearfix list-header-option">
                 <div style="float:left;">
-               <span class="text3" >　이용 기관 현황</span>
+                    <span class="text3">　이용 기관 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
                     <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
@@ -17,7 +17,7 @@
             <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
                 <thead>
                 <tr>
-                    <th class="list-header-option">
+                    <th class="list-header-option" >
                         이용 기관 명 ▣
                     </th>
                     <th class="list-header-option">
@@ -29,48 +29,15 @@
                 </tr>
                 </thead>
                 <tbody class="text-center list-contents-option">
-                <tr>
+                <tr ng-repeat="comp in companies" ng-click="select($index)">
                     <td>
-                        지앤텔
+                        {{comp.org_name}}
                     </td>
                     <td>
-                        서울시 금천구 가산동
+                        {{comp.city_name}}
                     </td>
                     <td>
-                        000-000-0000
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        씨아이원
-                    </td>
-                    <td>
-                        서울시 금천구 가산동
-                    </td>
-                    <td>
-                        000-000-0000
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        지앤텔
-                    </td>
-                    <td>
-                        서울시 금천구 가산동
-                    </td>
-                    <td>
-                        000-000-0000
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        씨아이원
-                    </td>
-                    <td>
-                        서울시 금천구 가산동
-                    </td>
-                    <td>
-                        000-000-0000
+                        {{comp.org_tel}}
                     </td>
                 </tr>
                 </tbody>
@@ -79,22 +46,23 @@
             <!-- list ▲ -->
             <div class="row clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-style" ng-click="">삭제
+                    <div ng-if="selectedItem!=null" style="float: left">선택 이용기관 명 : {{selectedItem.org_name}}　</div>
+                    <button type="button" class="btn btn-style" ng-click="deleteComp(selectedItem.org_code)" ng-confirm-click="정말 삭제하시겠습니까?">삭제
                     </button>
-                    <button type="button" class="btn btn-style" ng-click="">열람
+                    <button type="button" class="btn btn-style" ng-click="viewComp(selectedItem.org_code)">열람
                     </button>
-                    <button type="button" class="btn btn-style" ng-click="">수정
+                    <button type="button" class="btn btn-style" ng-click="modifyComp()">수정
                     </button>
-                    <button type="button" class="btn btn-style" ng-click="">신규
+                    <button type="button" class="btn btn-style" ng-click="clearComp()">신규
                     </button>
                 </div>
             </div>
         </div>
 
-<p></p>
+        <p></p>
 
 
-        <div class="list-header-option"><span class="text3" >　이용기관 등록</span></div>
+        <div class="list-header-option"><span class="text3">　이용기관 등록</span></div>
         <table class="table tb-list remove-margin contents-center">
             <tbody>
             <tr>
@@ -102,18 +70,22 @@
                     이용기관 명
                 </th>
                 <td>
-                    <select ng-options="" class="form-control" style="width: 200px">
+                    <input type="text" ng-model="useComp.org_name">
+                    <!--<select ng-options="" class="form-control" style="width: 200px">
                         <option>이용기관 코드 | 이용기관 명</option>
                         <option value="all">1-01 | 지앤텔</option>
                         <option value="all">1-02 | 씨아이원</option>
                         <option value="all">2-01 | 대림산업</option>
                         <option value="all">◎ 신규등록</option>
-                    </select>
+                    </select>-->
                 </td>
                 <th class="list-header-option text-center">
                     이용기관 코드
                 </th>
-                <td>
+                <td ng-if="useComp.org_code!=null">
+                    {{useComp.org_code}}
+                </td>
+                <td ng-if="useComp.org_code==null">
                     [자동생성]
                 </td>
             </tr>
@@ -122,13 +94,13 @@
                     회사 대표연락처
                 </th>
                 <td>
-                    <input type="text" placeholder="000-0000-0000">
+                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_tel">
                 </td>
                 <th class="list-header-option text-center">
                     회사 FAX
                 </th>
                 <td>
-                    <input type="text" placeholder="000-0000-0000">
+                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_fax">
                 </td>
             </tr>
             <tr>
@@ -136,13 +108,13 @@
                     이용기관 시군구
                 </th>
                 <td>
-                    <input type="text">
+                    <input type="text" ng-model="useComp.city_name">
                 </td>
                 <th class="list-header-option text-center">
                     상세주소
                 </th>
                 <td>
-                    <input type="text" style="width: 250px">
+                    <input type="text" style="width: 250px" ng-model="useComp.addr_code">
                 </td>
             </tr>
             <tr>
@@ -150,16 +122,15 @@
                     메세지 내용 작성
                 </th>
                 <td colspan="2">
-                    <textarea style="width: 100%"></textarea>
+                    <textarea style="width: 100%" ng-model="useComp.notice"></textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-style" ng-click="">저장
+                    <button type="button" class="btn btn-style" ng-click="saveComp()">저장
                     </button>
                 </td>
             </tr>
             </tbody>
         </table>
-
 
 
     </div>

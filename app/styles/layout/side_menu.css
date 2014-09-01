@@ -1,6 +1,6 @@
-/*test*/
-/*test*/
-/*//기본컨셉
+/*
+
+//기본컨셉
 //사이드 메뉴 색상
 @side-top-color :#e3dddd;
 @side-middle-color :#d6cccc;
@@ -21,8 +21,12 @@
 @btn-border-color: darken(#47a447,10%);
 
 @sub-title:@blue;
-@bg-title:@basic-bg;*/
-/*//블루컨셉
+@bg-title:@basic-bg;
+
+*/
+/*
+
+//블루컨셉
 //사이드 메뉴 색상
 
 @side-top-color : @blue1;
@@ -31,7 +35,7 @@
 
 @side-menu-color: @blue1;
 @gradient-color:@blue;
-@title:
+
 
 //테이블 색상
 
@@ -44,11 +48,10 @@
 @btn-bg-color: @blue1;
 @btn-border-color: @blue;
 
-@sub-title:@blue;*/
+@sub-title:@blue;
+@bg-title:@blue-bg;
+*/
 /*
-//올리브
-//사이드 메뉴 색상
-
 @side-top-color : @olive;
 @side-middle-color : @olive1;
 @side-font-color : #28171F;
@@ -70,6 +73,7 @@
 @btn-border-color: @olive1;
 
 @sub-title:@olive;
+@bg-title:@blue-bg;
 */
 .side-header-footer {
   margin: 5px;

@@ -2,7 +2,9 @@
 
 var app = angular.module('gntelCqmsApp', [
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'autocomplete',
+    'datatables'
 ]);
 app.config(function ($routeProvider, $locationProvider) {
         $routeProvider

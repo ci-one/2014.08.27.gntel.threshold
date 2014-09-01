@@ -3,52 +3,35 @@
  */
 'use strict';
 
-var data = [
-    {org_name: "Moroni", city_name: "Korea", org_tel: 50},
-    {org_name: "Tiancum", city_name: "Japan", org_tel: 43},
-    {org_name: "Jacob", city_name: "China", org_tel: 27},
-    {org_name: "Nephi", city_name: "Japan", org_tel: 29},
-    {org_name: "Enos", city_name: "Korea", org_tel: 34},
-    {org_name: "Tiancum", city_name: "China", org_tel: 43},
-    {org_name: "Jacob", city_name: "Japan", org_tel: 27},
-    {org_name: "Nephi", city_name: "Korea", org_tel: 29},
-    {org_name: "Enos", city_name: "Japan", org_tel: 34},
-    {org_name: "Tiancum", city_name: "China", org_tel: 43},
-    {org_name: "Jacob", city_name: "China", org_tel: 27},
-    {org_name: "Nephi", city_name: "Japan", org_tel: 29},
-    {org_name: "Enos", city_name: "Korea", org_tel: 34},
-    {org_name: "Tiancum", city_name: "China", org_tel: 43},
-    {org_name: "Jacob", city_name: "Korea", org_tel: 27},
-    {org_name: "Nephi", city_name: "Japan", org_tel: 29},
-    {org_name: "Enos", city_name: "China", org_tel: 34}
-];
-
 angular.module('gntelCqmsApp')
     .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
         $scope.org_names = [];
-        var getCompList = function () {/*
+        var getCompList = function () {
          $scope.companies = null;
          executeResults.getUseComp().then(function (data) {
          $scope.companies = data;
          clear();
+
+             $scope.tableParams = new ngTableParams({
+                 page: 1,            // show first page
+                 count: 5
+             }, {counts: [],
+                 total: data.length, // length of data
+                 getData: function ($defer, params) {
+                     // use build-in angular filter
+                     var orderedData = params.sorting() ?
+                         $filter('orderBy')(data, params.orderBy()) :
+                         data;
+
+                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                 }
+             });
+
          for(var i=0;i<data.length;i++){
          $scope.org_names.push(data[i].org_name);
          }
-         });*/
-            $scope.tableParams = new ngTableParams({
-                page: 1,            // show first page
-                count: 5
-            }, {counts: [],
-                total: data.length, // length of data
-                getData: function ($defer, params) {
-                    // use build-in angular filter
-                    var orderedData = params.sorting() ?
-                        $filter('orderBy')(data, params.orderBy()) :
-                        data;
+         });
 
-                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                }
-            });
         };
         getCompList();
 

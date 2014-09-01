@@ -4,7 +4,8 @@ var app = angular.module('gntelCqmsApp', [
     'ngRoute',
     'ui.bootstrap',
     'autocomplete',
-    'ngTable'
+    'ngTable',
+    'wysiwyg.module'
 ]);
 app.config(function ($routeProvider, $locationProvider) {
         $routeProvider

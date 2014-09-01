@@ -52,8 +52,8 @@ angular.module('gntelCqmsApp')
         };
         getCompList();
 
-        $scope.select = function (index) {
-            $scope.selectedItem = $scope.companies[index];
+        $scope.selectComp = function (index) {
+            $scope.selectedItem = data[index];
         };
 
         $scope.deleteComp = function (org_code) {
@@ -81,7 +81,6 @@ angular.module('gntelCqmsApp')
         };
 
         $scope.saveComp = function () {
-
             if ($scope.useComp.org_code != null && $scope.useComp.org_code != '') {
                 executeResults.updateUseComp($scope.useComp).then(function () {
                     alert('이용기관이 수정되었습니다.');

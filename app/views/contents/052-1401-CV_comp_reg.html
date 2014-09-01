@@ -16,46 +16,18 @@
                 </div>
             </div>
             <table ng-table="tableParams" class="table">
-                <tr ng-repeat="user in $data">
+                <tr ng-repeat="comp in $data"
+                    ng-click="selectComp($index);">
                     <td data-title="'이용기관 명'" sortable="'org_name'">
-                        {{user.org_name}}
-                    </td>
-                    <td data-title="'이용 기관 시군구'" sortable="'city_name'">
-                        {{user.city_name}}
-                    </td>
-                    <td data-title="'이용기관 전화번호'" sortable="'org_tel'">
-                        {{user.org_tel}}
-                    </td>
-                </tr>
-            </table>
-            <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-                <thead>
-                <tr>
-                    <th class="list-header-option" >
-                        이용 기관 명 ▣
-                    </th>
-                    <th class="list-header-option">
-                        이용 기관 시군구 ▣
-                    </th>
-                    <th class="list-header-option">
-                        이용기관 전화번호 ▣
-                    </th>
-                </tr>
-                </thead>
-                <tbody class="text-center list-contents-option">
-                <tr ng-repeat="comp in companies" ng-click="select($index)">
-                    <td>
                         {{comp.org_name}}
                     </td>
-                    <td>
+                    <td data-title="'이용 기관 시군구'" sortable="'city_name'">
                         {{comp.city_name}}
                     </td>
-                    <td>
+                    <td data-title="'이용기관 전화번호'" sortable="'org_tel'">
                         {{comp.org_tel}}
                     </td>
                 </tr>
-                </tbody>
-
             </table>
             <!-- list ▲ -->
             <div class="row clearfix">
@@ -128,13 +100,14 @@
                 <th class="list-header-option text-center">
                     메세지 내용 작성
                 </th>
-                <td colspan="2">
-                    <textarea style="width: 100%" ng-model="useComp.notice"></textarea>
+                <td colspan="3">
+                    <wysiwyg textarea-id="question" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required  ng-model="useComp.notice" enable-bootstrap-title="true"></wysiwyg>
                 </td>
-                <td>
-                    <button type="button" class="btn btn-style" ng-click="saveComp()">저장
-                    </button>
-                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center"></th>
+                <td colspan="3"><button type="button" class="btn btn-style" ng-click="saveComp()">저장
+                </button></td>
             </tr>
             </tbody>
         </table>

@@ -35,7 +35,7 @@ angular.module('gntelCqmsApp')
         getCompList();
 
         $scope.selectComp = function (index) {
-            $scope.selectedItem = $scope.companies[index];
+            $scope.selectedItem = $scope.tableParams.data[index];
         };
 
         $scope.deleteComp = function (org_code) {

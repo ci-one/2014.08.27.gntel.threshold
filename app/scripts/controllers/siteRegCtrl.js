@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('siteRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
         $scope.org_names = [];
         var getCompList = function () {
          $scope.companies = null;
@@ -12,7 +12,7 @@ angular.module('gntelCqmsApp')
          $scope.companies = data;
          clear();
 
-             $scope.tableParams = new ngTableParams({
+             $scope.compTable = new ngTableParams({
                  page: 1,            // 시작페이지
                  count: 5
              }, {counts: [],

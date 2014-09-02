@@ -13,12 +13,11 @@ angular.module('gntelCqmsApp')
          clear();
 
              $scope.tableParams = new ngTableParams({
-                 page: 1,            // show first page
+                 page: 1,
                  count: 5
              }, {counts: [],
-                 total: data.length, // length of data
+                 total: data.length,
                  getData: function ($defer, params) {
-                     // use build-in angular filter
                      var orderedData = params.sorting() ?
                          $filter('orderBy')(data, params.orderBy()) :
                          data;
@@ -36,7 +35,7 @@ angular.module('gntelCqmsApp')
         getCompList();
 
         $scope.selectComp = function (index) {
-            $scope.selectedItem = data[index];
+            $scope.selectedItem = $scope.companies[index];
         };
 
         $scope.deleteComp = function (org_code) {
@@ -68,6 +67,7 @@ angular.module('gntelCqmsApp')
                 executeResults.updateUseComp($scope.useComp).then(function () {
                     alert('이용기관이 수정되었습니다.');
                     getCompList();
+
                 });
             } else {
                 executeResults.insertUseComp($scope.useComp).then(function () {
@@ -79,7 +79,6 @@ angular.module('gntelCqmsApp')
 
         //자동완성
         $scope.updateOrgName = function (typed) {
-            // MovieRetriever could be some service returning a promise
             $scope.neworg_names = MovieRetriever.getmovies(typed);
             $scope.neworg_names.then(function (data) {
                 $scope.org_names = data;

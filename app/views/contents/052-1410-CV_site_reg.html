@@ -31,15 +31,14 @@
                     </td>
                 </tr>
             </table>
-
-            <!-- list ▲ -->
+            <!-- list ▲ --><div ng-if="selectedItem!=null" class="h4" style="float: left">선택 이용기관 명 : {{selectedItem.org_name}}　</div>
             <div class="row clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-style" ng-click="">삭제
+                    <button type="button" class="btn btn-style" ng-click="deleteComp(selectedItem.org_code)" ng-confirm-click="정말 삭제하시겠습니까?">삭제
                     </button>
-                    <button type="button" class="btn btn-style" ng-click="">수정
+                    <button type="button" class="btn btn-style" ng-click="modifyComp()">수정
                     </button>
-                    <button type="button" class="btn btn-style" ng-click="">신규
+                    <button type="button" class="btn btn-style" ng-click="clearComp()">신규
                     </button>
                 </div>
             </div>
@@ -56,18 +55,16 @@
                     이용기관 현장 명
                 </th>
                 <td>
-                    <select ng-options="" class="form-control" style="width: 200px">
-                        <option>이용기관 명 | 이용기관 현장명</option>
-                        <option value="all">지앤텔 | A현장</option>
-                        <option value="all">씨아이원 | B현장</option>
-                        <option value="all">대림산업 | C현장</option>
-                        <option value="all">◎ 신규등록</option>
-                    </select>
+                    <autocomplete  ng-model="useComp.org_name" data="org_names"
+                                   on-type="updateOrgName" click-activation =true></autocomplete>
                 </td>
                 <th class="list-header-option text-center">
                     이용 기관 명
                 </th>
-                <td>
+                <td ng-if="useComp.org_code!=null">
+                    {{useComp.org_code}}
+                </td>
+                <td ng-if="useComp.org_code==null">
                     [자동생성]
                 </td>
             </tr>
@@ -76,13 +73,8 @@
                     현장 시군구
                 </th>
                 <td>
-                    <select ng-options="" class="form-control" style="width: 200px">
-                        <option>시도 명 | 시군구 명</option>
-                        <option value="all">서울시 | 영등포구</option>
-                        <option value="all">부천시 | 원미구</option>
-                        <option value="all">인천시 | 남구</option>
-                        <option value="all">◎ 신규등록</option>
-                    </select>
+                    <autocomplete  ng-model="useComp.org_name" data="org_names"
+                                   on-type="updateOrgName" click-activation =true></autocomplete>
                 </td>
                 <th class="list-header-option text-center">
                     상세주소
@@ -109,13 +101,14 @@
                 <th class="list-header-option text-center">
                     참고사항
                 </th>
-                <td colspan="2">
-                    <textarea style="width: 100%"></textarea>
+                <td colspan="3">
+                    <wysiwyg textarea-id="question" id="wys" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required  ng-model="useComp.notice" enable-bootstrap-title="true"></wysiwyg>
                 </td>
-                <td>
-                    <button type="button" class="btn btn-style" ng-click="">저장
-                    </button>
-                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center"></th>
+                <td colspan="3"><button type="button" class="btn btn-style" ng-click="saveComp()">저장
+                </button></td>
             </tr>
             </tbody>
         </table>

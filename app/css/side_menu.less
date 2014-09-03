@@ -1,0 +1,86 @@
+@import "var";
+
+.side-header-footer{
+  .side-default(@side-font-color,@side-top-color);
+}
+
+.side-middle{
+  .side-default(@side-font-color,@side-middle-color);
+}
+
+.a-style{
+/*.a-st2*/
+}
+
+
+
+/*//////////////////////////////////////////////////////*/
+
+.side-default(@color:#fff, @bg-color : #4b4b4b) {
+  margin: 5px;
+
+  color: @color;
+  background-color:@bg-color;
+
+  border: 8px solid transparent;
+  -moz-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Old firefox */
+  -webkit-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Safari */
+  -o-border-image:url("../../images/layout/border-all.png") 10 10 round; /* Opera */
+  border-image:url("../../images/layout/border-all.png") 10 10 stretch;
+  ul li a{
+    color:@color;
+  }
+}
+
+
+.a-st(@radius : 5px, @bc : #ffffff, @border: 0px){
+
+  border-top-left-radius:@radius;
+  border-top-right-radius:@radius;
+  border-bottom-right-radius:@radius;
+  border-bottom-left-radius:@radius;
+  text-indent:0;
+
+  background: @side-menu-color; /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffc578 0%, @side-menu-color 100%); /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc578), color-stop(100%,#fb9d23)); /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, @gradient-color 0%,@side-menu-color 100%); /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, @gradient-color 0%,@side-menu-color 100%); /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, @gradient-color 0%,@side-menu-color 100%); /* IE10+ */
+
+  background: linear-gradient(to bottom, @gradient-color 0%,@side-menu-color 100%); /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc578', endColorstr='#fb9d23',GradientType=0 ); /* IE6-9 */
+
+
+  border : @border solid @bc;
+  font-family:arial;
+  font-size:12px;
+  font-style:normal;
+  /*  height:50px;
+    line-height:50px;
+    width:100px;*/
+  text-decoration:none;
+
+}
+
+.a-st1{
+  .a-st(20px,#ffffff,1px);
+}
+.a-st2{
+  .a-st(15px,lighten(@side-menu-color, 20%),0px);
+  border-top-right-radius:0px !important;
+  border-bottom-right-radius:0px !important;
+  border-bottom-left-radius:0px !important;
+
+}
+
+.menu-list > li.list-header-underline {
+  border-bottom: solid 1px white;
+  .a-style;
+}

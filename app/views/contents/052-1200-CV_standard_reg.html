@@ -25,14 +25,14 @@
                     품질 등급
                 </th>
                 <td>
-                    <select ng-options="" class="form-control">
+                    <select ng-options="" ng-model="abcd" class="form-control">
                         <option>품질등급 코드 | 품질등급 명</option>
-                        <option value="all">1-01 | 음성품질 R값</option>
-                        <option value="all">1-02 | 음성품질 MOS</option>
-                        <option value="all">2-01 | 시스템 장애</option>
-                        <option value="all">◎ 신규등록</option>
+                        <option value="a">1-01 | 음성품질 R값</option>
+                        <option value="b">1-02 | 음성품질 MOS</option>
+                        <option value="c">2-01 | 시스템 장애</option>
+                        <option value="d">◎ 신규등록</option>
                     </select>
-                </td>
+                </td>abcd : {{abcd}}
             </tr>
             <tr>
                 <td colspan="3">

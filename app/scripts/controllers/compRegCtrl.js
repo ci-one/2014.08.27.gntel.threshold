@@ -6,37 +6,53 @@
 angular.module('gntelCqmsApp')
     .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
         $scope.org_names = [];
+
+
+        var clear = function () {
+            $scope.selectedItem = null;
+
+            $scope.org_names = [];
+            $scope.useComp = null;
+        };
+
         var getCompList = function () {
-         $scope.companies = null;
-         executeResults.getUseComp().then(function (data) {
-         $scope.companies = data;
-         clear();
 
-             $scope.compTable = new ngTableParams({
-                 page: 1,            // show first page
-                 count: 5
-             }, {counts: [],
-                 total: data.length, // length of data
-                 getData: function ($defer, params) {
-                     // use build-in angular filter
-                     var orderedData = params.sorting() ?
-                         $filter('orderBy')(data, params.orderBy()) :
-                         data;
+            executeResults.getUseComp().then(function (data) {
+                clear();
+                $scope.itemList = data;
 
-                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                 }
-             });
+                $scope.compTable = new ngTableParams({
+                    page: 1,            // show first page
+                    count: 5,
+                    sorting: {
+                        city_name: 'desc'     // initial sorting
+                    }
+                }, {counts: [],
+                    total: data.length, // length of data
+                    getData: function ($defer, params) {
+                        // use build-in angular filter
+                        var orderedData = params.sorting() ?
+                            $filter('orderBy')(data, params.orderBy()) :
+                            data;
 
-         for(var i=0;i<data.length;i++){
-         $scope.org_names.push(data[i].org_name);
-         }
-         });
-
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+                for (var i = 0; i < data.length; i++) {
+                    $scope.org_names.push(data[i].org_name);
+                }
+                $scope.updateOrgName();
+            });
         };
         getCompList();
 
         $scope.selectComp = function (index) {
-            $scope.selectedItem = $scope.companies[index];
+            if ($scope.compTable.data[index] == null)
+                $scope.selectedItem = $scope.itemList[index];
+            else {
+                $scope.selectedItem = $scope.compTable.data[index];
+            }
+
         };
 
         $scope.deleteComp = function (org_code) {
@@ -58,17 +74,12 @@ angular.module('gntelCqmsApp')
             $scope.selectedItem = null;
         };
 
-        var clear = function () {
-            $scope.useComp = null;
-            $scope.selectedItem = null;
-        };
 
         $scope.saveComp = function () {
             if ($scope.useComp.org_code != null && $scope.useComp.org_code != '') {
                 executeResults.updateUseComp($scope.useComp).then(function () {
                     alert('이용기관이 수정되었습니다.');
                     getCompList();
-
                 });
             } else {
                 executeResults.insertUseComp($scope.useComp).then(function () {

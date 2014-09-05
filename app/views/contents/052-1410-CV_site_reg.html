@@ -65,7 +65,8 @@
                     {{useComp.org_code}}
                 </td>
                 <td ng-if="useComp.org_code==null">
-                    [자동생성]
+                    <autocomplete  ng-model="useComp.org_name" data="org_names"
+                                   on-type="updateOrgName" click-activation =true></autocomplete>
                 </td>
             </tr>
             <tr>

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <table ng-table="compTable" class="table table-striped table-bordered">
-                <tr ng-repeat="comp in $data" ng-click="selectComp($index);" class="text-center">
+                <tr ng-repeat="comp in $data" ng-click="selectComp($index);" style="cursor:pointer" class="text-center">
                     <td data-title="'이용기관 명'" sortable="'org_name'">
                         {{comp.org_name}}
                     </td>

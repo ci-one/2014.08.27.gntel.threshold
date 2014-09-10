@@ -5,16 +5,17 @@
 
 angular.module('gntelCqmsApp')
     .controller('sitemRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
-        $scope.org_names = [];
+        $scope.dep_names = [];
+        $scope.role_names = [];
 
         var reloadTable = function(){
             $scope.selectedItem = null;
             $scope.org_names = [];
-            $scope.useComp = null;
+            $scope.thisMem = null;
             executeResults.getUseComp().then(function (data) {
                 $scope.itemList = data;
                 for (var i = 0; i < data.length; i++) {
-                    $scope.org_names.push(data[i].org_name);
+                    $scope.dep_names.push(data[i].dep_name);
                 }
                 //$scope.updateOrgName();
             }).then(function(){
@@ -24,15 +25,17 @@ angular.module('gntelCqmsApp')
 
         var getCompMem = function () {
             executeResults.getCompMem().then(function (data) {
-                console.log(data);
                 $scope.itemList = data;
-
+                for (var i = 0; i < data.length; i++) {
+                    $scope.dep_names.push(data[i].dep_name);
+                    $scope.role_names.push(data[i].role_name);
+                }
             }).then(function(){
                 $scope.memTable = new ngTableParams({
                     page: 1,            // show first page
                     count: 5,
                     sorting: {
-                        city_name: 'desc'     // initial sorting
+                        mem_name: 'desc'     // initial sorting
                     }
                 }, {counts: [],
                     total: $scope.itemList.length, // length of data
@@ -58,7 +61,7 @@ angular.module('gntelCqmsApp')
 
         };
 
-        $scope.deleteComp = function (org_code) {
+        $scope.deleteMem = function (org_code) {
 
             executeResults.deleteUseComp(org_code).then(function () {
                 alert('삭제되었습니다.');
@@ -69,24 +72,24 @@ angular.module('gntelCqmsApp')
         $scope.viewComp = function (org_code) {
         };
 
-        $scope.modifyComp = function () {
-            $scope.useComp = $scope.selectedItem;
+        $scope.modifyMem = function () {
+            $scope.thisMem = $scope.selectedItem;
         };
 
-        $scope.clearComp = function () {
-            $scope.useComp = null;
+        $scope.clearMem = function () {
+            $scope.thisMem = null;
             $scope.selectedItem = null;
         };
 
 
         $scope.saveComp = function () {
-            if ($scope.useComp.org_code != null && $scope.useComp.org_code != '') {
-                executeResults.updateUseComp($scope.useComp).then(function () {
+            if ($scope.thisMem.org_code != null && $scope.thisMem.org_code != '') {
+                executeResults.updateUseComp($scope.thisMem).then(function () {
                     alert('이용기관이 수정되었습니다.');
                     reloadTable();
                 });
             } else {
-                executeResults.insertUseComp($scope.useComp).then(function () {
+                executeResults.insertUseComp($scope.thisMem).then(function () {
                     alert('이용기관을 추가하였습니다.');
                     reloadTable();
                 })
@@ -94,11 +97,11 @@ angular.module('gntelCqmsApp')
         };
 
         //자동완성
-        $scope.updateOrgName = function (typed) {
+        $scope.updateDepName = function (typed) {
             // MovieRetriever could be some service returning a promise
-            $scope.neworg_names = MovieRetriever.getmovies(typed);
-            $scope.neworg_names.then(function (data) {
-                $scope.org_names = data;
+            $scope.newDep_names = MovieRetriever.getmovies(typed);
+            $scope.newDep_names.then(function (data) {
+                $scope.dep_names = data;
             });
         }
     });

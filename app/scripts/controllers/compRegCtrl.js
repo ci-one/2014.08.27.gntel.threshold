@@ -35,7 +35,7 @@ angular.module('gntelCqmsApp')
                     page: 1,            // show first page
                     count: 5,
                     sorting: {
-                        city_name: 'desc'     // initial sorting
+                        org_name: 'desc'     // initial sorting
                     }
                 }, {counts: [],
                     total: $scope.itemList.length, // length of data

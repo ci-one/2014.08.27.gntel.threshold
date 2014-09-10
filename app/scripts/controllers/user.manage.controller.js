@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('userManageCtrl', function ($scope, executeResults) {
+    .controller('userManageCtrlnouse', function ($scope, executeResults) {
         var getQltClassList = function () {
             executeResults.getQltClassList().then(function (result) {
                 for (var i = 0; i < result.sending.length; i++) {

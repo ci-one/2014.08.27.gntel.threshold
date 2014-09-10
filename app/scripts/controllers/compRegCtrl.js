@@ -56,7 +56,7 @@ angular.module('gntelCqmsApp')
         };
 
         $scope.deleteComp = function (org_code) {
-            executeResults.deleteUseComp(org_code).then(function () {
+            executeResults.deleteComp(org_code).then(function () {
                 alert('삭제되었습니다.');
                 getCompList();
             })
@@ -85,6 +85,7 @@ angular.module('gntelCqmsApp')
                 executeResults.insertUseComp($scope.useComp).then(function () {
                     alert('이용기관을 추가하였습니다.');
                     getCompList();
+
                 })
             }
         };
@@ -96,5 +97,12 @@ angular.module('gntelCqmsApp')
             $scope.neworg_names.then(function (data) {
                 $scope.org_names = data;
             });
-        }
+        };
+
+        $scope.deleteComp = function (org_code) {
+            executeResults.deleteUseComp(org_code).then(function () {
+                alert('삭제되었습니다.');
+                getCompList();
+            })
+        };
     });

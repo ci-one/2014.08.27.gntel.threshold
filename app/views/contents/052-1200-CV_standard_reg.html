@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="styles/layout/contents.css">
+<link rel="stylesheet" href="../../styles/layout/contents.css">
 
 <div ng-controller="userManageCtrl" class="contents-layout">
 
@@ -13,33 +13,34 @@
                     임계치 관리항목
                 </th>
                 <td>
-                    <select ng-options="" class="form-control">
+                    <select ng-options="" ng-model="qltClass.qlt_code" class="form-control">
                         <option>임계치 항목코드 | 임계치 항목 명</option>
-                        <option value="all">1-01 | 음성품질 R값</option>
-                        <option value="all">1-02 | 음성품질 MOS</option>
-                        <option value="all">2-01 | 시스템 장애</option>
-                        <option value="all">◎ 신규등록</option>
+                        <option value="1">1-01 | 음성품질 R값</option>
+                        <option value="2">1-02 | 음성품질 MOS</option>
+                        <option value="3">2-01 | 시스템 장애</option>
+                        <option value="4">◎ 신규등록</option>
                     </select>
                 </td>
+                품질 등급
                 <th class="list-header-option text-center">
-                    품질 등급
                 </th>
                 <td>
-                    <select ng-options="" ng-model="abcd" class="form-control">
+                    <select ng-options="" ng-model="qltClass.qlt_name"  class="form-control">
                         <option>품질등급 코드 | 품질등급 명</option>
                         <option value="a">1-01 | 음성품질 R값</option>
                         <option value="b">1-02 | 음성품질 MOS</option>
                         <option value="c">2-01 | 시스템 장애</option>
                         <option value="d">◎ 신규등록</option>
                     </select>
-                </td>
+                </td>qltClass.qlt_code : {{qltClass.qlt_code}}<br>
+                qltClass.qlt_name: {{qltClass.qlt_name}}
             </tr>
             <tr>
                 <td colspan="3">
                     　
                 </td>
                 <td>
-                    <input type="button" class="btn btn-style" value="저장">
+                    <input type="button" ng-click="saveQltClass()" class="btn btn-style" value="저장">
                 </td>
             </tr>
             </tbody>

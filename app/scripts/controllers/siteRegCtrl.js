@@ -10,6 +10,7 @@ angular.module('gntelCqmsApp')
          $scope.companies = null;
          executeResults.getUseComp().then(function (data) {
          $scope.companies = data;
+         console.log(data);
          clear();
 
              $scope.compTable = new ngTableParams({

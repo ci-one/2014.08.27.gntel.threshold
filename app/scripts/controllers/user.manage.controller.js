@@ -4,24 +4,34 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('userManageCtrl', function ($scope) {
+    .controller('userManageCtrl', function ($scope, executeResults) {
+        var getQltClassList = function () {
+            executeResults.getQltClassList().then(function (result) {
+                for (var i = 0; i < result.sending.length; i++) {
+                    console.log(result.sending[i]);
+                }
+            })
+        };
+        getQltClassList();
+        console.log("콘솔확인");
+
         $scope.change = function (item) {
             $scope.click = item
-        }
+        };
         $scope.detail = false;
         $scope.detailprocess = function () {
-            if($scope.detail == true)
+            if ($scope.detail == true)
                 $scope.detail = false;
             else
                 $scope.detail = true;
-        }
+        };
 
         $scope.$on("user:selected", function (e, selected) {
 
             if ($scope.selectedItem == selected)
                 return;
 
-            $scope.selectedItem = selected;
+            $scope.selectedItem = selecte
             $scope.previewState = selected.state;
             $scope.afterState = null;
         });
@@ -41,6 +51,18 @@ angular.module('gntelCqmsApp')
             var data = {state: state, operator: 'admin', id: $scope.selectedItem['memberid']};
 
             $scope.$broadcast('reload:list');
+        };
+
+        $scope.clearComp = function () {
+
+        };
+
+        $scope.saveQltClass = function () {
+            alert("scope1:" + $scope.qltClass);
+            alert("scope2:" + $scope.qltClass.qlt_code);
+            alert("scope3:" + $scope.qltClass.qlt_name);
+            executeResults.insertQltClass($scope.qltClass);
+
         };
 
     })

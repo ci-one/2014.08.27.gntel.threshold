@@ -142,6 +142,38 @@ angular.module('gntelCqmsApp')
         };
 
 
+        // 임계치 처리현황 - 임계치 처리현황 리스트
+        executeResults.getProcessList = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getProcessList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
+        // 임계치 처리현황 - 발생항목 코멘트 처리내역 리스트 get
+        executeResults.getActionList = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getActionList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
 
 
         return executeResults;

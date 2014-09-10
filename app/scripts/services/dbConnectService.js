@@ -59,5 +59,24 @@ angular.module('gntelCqmsApp')
             return deferred.promise;
         };
 
+        //기관맴버 획득
+        executeResults.getCompMem = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getCompMem'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
+
+
+
         return executeResults;
     });

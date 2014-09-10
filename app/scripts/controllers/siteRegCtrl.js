@@ -1,6 +1,6 @@
-/**
- * Created by BLKNABI on 2014-08-14.
- */
+<!-- 사용되지 않음 -->
+
+
 'use strict';
 
 angular.module('gntelCqmsApp')

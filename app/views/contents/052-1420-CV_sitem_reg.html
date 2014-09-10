@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="styles/layout/contents.css">
+<link rel="stylesheet" href="styles/autocomplete.css">
 
-<div class="contents-layout">
+<div class="contents-layout" ng-controller="sitemRegCtrl">
 
     <div class="contents-background">
         <!-- list ▼ -->
@@ -14,92 +15,27 @@
                     </button>
                 </div>
             </div>
-            <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-                <thead>
-                <tr>
-                    <th class="list-header-option">
-                        이용 기관 명 ▣
-                    </th>
-                    <th class="list-header-option">
-                        이용기관 현장 명 ▣
-                    </th>
-                    <th class="list-header-option">
-                        담당자 ▣
-                    </th>
-                    <th class="list-header-option">
-                        직책
-                    </th>
-                    <th class="list-header-option">
-                        부서
-                    </th>
-                    <th class="list-header-option">
-                        시군구 ▣
-                    </th>
-                </tr>
-                </thead>
-                <tbody class="text-center list-contents-option">
-                <tr>
-                    <td>
+            <table ng-table="sitemTable" class="table table-striped table-bordered">
+                <tr ng-repeat="mem in $data" ng-click="selectMem($index);" class="text-center">
+                    <td data-title="'이용기관 명'" sortable="'org_name'">
                         대림산업
                     </td>
-                    <td>
-                        인천 송도 배수장
+                    <td data-title="'담당자 명'" sortable="'mem_name'">
+                        {{mem.mem_name}}
                     </td>
-                    <td>
-                        홍길동
+                    <td data-title="'부서'" sortable="'dep_name'">
+                        {{mem.dep_name}}
                     </td>
-                    <td>
-                        과장
+                    <td data-title="'직책'" sortable="'role_name'">
+                        {{mem.role_name}}
                     </td>
-                    <td>
-                        총무부
-                    </td>
-                    <td>
-                        인천광역시 연수구
+                    <td data-title="'사원ID'" sortable="'mem_id'">
+                        {{mem.mem_id}}
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        대림산업1
-                    </td>
-                    <td>
-                        인천 송도 배수장1
-                    </td>
-                    <td>
-                        인순이
-                    </td>
-                    <td>
-                        팀장
-                    </td>
-                    <td>
-                        인사부
-                    </td>
-                    <td>
-                        인천광역시 연수구1
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        대림산업2
-                    </td>
-                    <td>
-                        인천 송도 배수장2
-                    </td>
-                    <td>
-                        우뢰매
-                    </td>
-                    <td>
-                        본부장
-                    </td>
-                    <td>
-                        총무부
-                    </td>
-                    <td>
-                        인천광역시 연수구2
-                    </td>
-                </tr>
-                </tbody>
             </table>
+            <!-- list ▲ --><div ng-if="selectedItem!=null" class="h4" style="float: left">선택 담당자 명 : {{selectedItem.org_name}}　</div>
+
             <!-- list ▲ -->
             <div class="row clearfix">
                 <div class="pull-right">

@@ -40,7 +40,7 @@
             },
             xAxis: [
                 {
-                    categories: ['MOB', 'DELAY', 'TX손실율', 'RX손실율', 'TX JITTER', 'RX JITTER']
+                    categories: ['fatal', 'critical', 'major', 'minor', 'warning', 'danger', 'normal']
                 }
             ],
             yAxis: [
@@ -51,25 +51,11 @@
                         }
                     },
                     title: {
-                        text: '값',
+                        text: '횟수',
                         style: {
                             color: Highcharts.getOptions().colors[1]
                         }
                     }
-                },
-                { // Secondary yAxis
-                    title: {
-                        text: '측정값',
-                        style: {
-                            color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    labels: {
-                        style: {
-                            color: Highcharts.getOptions().colors[0]
-                        }
-                    },
-                    opposite: true
                 }
             ],
             tooltip: {
@@ -86,31 +72,13 @@
             },
             series: [
                 {
-                    name: '평균',
+                    name: '발생횟수',
                     type: 'column',
-                    yAxis: 1,
-                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0],
+                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 176.0],
                     tooltip: {
-                        valueSuffix: ' mm'
+                        valueSuffix: ' 번'
                     }
 
-                },
-                {
-                    name: '최대',
-                    type: 'spline',
-                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5],
-                    tooltip: {
-                        valueSuffix: '°C'
-                    }
-                },
-                {
-                    name: '최소',
-                    type: 'spline',
-                    color: '#FFE400',
-                    data: [6.0, 6.3, 8.5, 10.5, 15.2, 17.5],
-                    tooltip: {
-                        valueSuffix: '°C'
-                    }
                 }
             ]
         });

@@ -13,7 +13,7 @@ angular.module('gntelCqmsApp')
             })
         };
         getQltClassList();
-        console.log("콘솔확인");
+
 
         $scope.change = function (item) {
             $scope.click = item

@@ -92,6 +92,38 @@ angular.module('gntelCqmsApp')
             return deferred.promise;
         };
 
+        executeResults.getOccurList = function () {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/getOccurList'
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                    for(var i=0;i<data.sending.length;i++){
+                        console.log("getOccurList 데이터"+i+" : "+data.sending[i].system_code+data.sending[i].qlt_code+data.sending[i].action_seq);
+                    }
+
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getOccurQltCnt = function () {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/getOccurQltCnt'
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                    for(var i=0;i<data.sending.length;i++){
+                        console.log("getOccurList 데이터"+i+" : "+data.sending[i].system_code+data.sending[i].qlt_code+data.sending[i].action_seq);
+                    }
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
         //기관맴버 획득
         executeResults.getCompMem = function () {

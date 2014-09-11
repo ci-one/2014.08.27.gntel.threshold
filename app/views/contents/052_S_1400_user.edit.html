@@ -1,0 +1,145 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>GNTEL - 대림산업</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../../styles/layout/contents.css">
+    <link rel="stylesheet" href="styles/layout/login.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="gntelCqmsApp" ng-controller="MainCtrl">
+
+
+<div class="login-add center-block" style="margin-top:15px; width:750px; height:575px;">
+<div class="col-md-12">
+    <!-- title ▼ -->
+    <div class="subtitle" style="padding-left: 0;">
+        　　　이용자 정보변경
+    </div>
+    <!-- title ▲ -->
+        </div>
+
+    <!-- table ▼ -->
+   <div class="col-md-12">
+       <table class="table table-bordered remove-margin">
+           <tbody>
+          <tr>
+               <th class="list-header-option">비밀번호 <strong class="text-danger">*</strong></th>
+               <td><input type="password" class="form-control input-sm"/></td>
+
+           </tr>
+           <tr>
+               <th class="list-header-option">변경 비밀번호 <strong class="text-danger">*</strong></th>
+               <td><input type="password" class="form-control input-sm" style="width:60%; float:left; margin-right:15px;"/>  비밀번호 변경 시에만 입력해 주세요.</td>
+
+           </tr>
+          <tr>
+              <th class="list-header-option">비밀번호 확인</th>
+              <td><input type="password" class="form-control input-sm"  style="width:60%; float:left; margin-right:15px;"/ />  8~18자의 영문, 숫자 조합</td>
+          </tr>
+           <tr>
+               <th class="list-header-option">성명 <strong class="text-danger">*</strong></th>
+               <td><input type="text" class="form-control input-sm" /> </td>
+           </tr>
+           <tr>
+               <th class="list-header-option">부서명</th>
+               <td><input type="text" class="form-control input-sm" /></td>
+           </tr>
+           <tr>
+               <th class="list-header-option">직위명</th>
+               <td><input type="text" class="form-control input-sm"/> </td>
+           </tr>
+           <tr>
+               <th class="list-header-option">회사 전화번호</th>
+               <td><form class="form-inline" role="form"><input type="text" class="form-control input-sm " style="width:27%;" /> - <input type="text" class="form-control input-sm" style="width:34%;" /> - <input type="text" class="form-control input-sm" style="width:34%;"  /></form> </td>
+           </tr>
+           <tr>
+               <th class="list-header-option">회사 FAX</th>
+               <td><form class="form-inline" role="form"><input type="text" class="form-control input-sm " style="width:27%;" /> - <input type="text" class="form-control input-sm" style="width:34%;" /> - <input type="text" class="form-control input-sm" style="width:34%;"  /></form> </td>
+           </tr>
+           <tr>
+               <th class="list-header-option">핸드폰</th>
+               <td><form class="form-inline" role="form"><select class="form-control input-sm" style="width:27%;" />
+                   <option>선택</option>
+                   <option>010</option>
+                   <option>011</option>
+               </select> - <input type="text" class="form-control input-sm"  style="width:34%;"  /> - <input type="text"  class="form-control input-sm" style="width:34%;"  /> </form></td>
+           </tr>
+           <tr>
+               <th class="list-header-option">E-mail <strong class="text-danger">*</strong></th>
+               <td><form class="form-inline" role="form">
+                   <input type="EMAIL"  class="form-control input-sm"  style="width:30%;"/> @ <input type="EMAIL"  class="form-control input-sm" style="width:32%;" />
+                   <select class="form-control input-sm" style="width:34%;">
+                       <option>직접입력</option>
+                       <option>naver.com</option>
+                       <option>nate.com</option>
+                       <option>daum.net</option>
+                       <option>paran.com</option>
+                       <option>yahoo.co.kr</option>
+                       <option>empal.com</option>
+                       <option>hanmir.com</option>
+                       <option>hotmail.com</option>
+                       <option>korea.com</option>
+                   </select></form></td>
+           </tr>
+           </tbody>
+       </table>
+       </div>
+
+    <div class="col-md-12" style="margin-top: 15px;">
+        <div class="pull-right">
+        <button class="btn btn-style"><span class="glyphicon glyphicon-ok" ></span> 확인 </button> <button class="btn btn-base" style="margin-left:10px;"> 취소 </button>
+        </div>
+        </div>
+</div>
+</div>
+
+
+
+
+
+<!-- build:js(app) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/services/code.services.js"></script>
+<script src="scripts/services/user.manage.services.js"></script>
+<script src="scripts/services/user.access.services.js"></script>
+<script src="scripts/services/user.org.services.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/user.manage.controller.js"></script>
+<script src="scripts/controllers/user.access.controller.js"></script>
+<script src="scripts/controllers/user.org.controller.js"></script>
+<!-- endbuild -->
+</body>
+</html>

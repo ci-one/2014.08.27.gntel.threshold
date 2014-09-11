@@ -10,10 +10,7 @@ angular.module('gntelCqmsApp')
         var getProList = function () {
 
             executeResults.getProcessList().then(function (data) {
-//                alert(data);
                 $scope.processLists = data;
-                console.log(data);
-
             }).then(function () {
                 $scope.processTable = new ngTableParams({
                     page: 1,            // show first page
@@ -38,9 +35,7 @@ angular.module('gntelCqmsApp')
 
         var getProList1 = function () {
             executeResults.getActionList().then(function (data) {
-//                alert(data);
                 $scope.processedLists = data;
-                console.log(data);
             }).then(function () {
                 $scope.processedTable = new ngTableParams({
                     page: 1,            // show first page

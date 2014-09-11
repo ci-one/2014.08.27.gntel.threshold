@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
+<style>
+    .text3{font-size:14px; text-indent:15px; line-height:30px; font-weight:600;}
 
+</style>
 <div ng-controller="processCtrl" class="contents-layout">
 
     <!-- title ▼ -->
@@ -10,9 +13,9 @@
     <div class="contents-background">
         <!-- list ▼ -->
         <div style="">
-            <div class="row clearfix list-header-option">
+            <div class="row clearfix list-header-option" style="margin-bottom: 1px;">
                 <div style="float:left;">
-                <span class="text3" >　액션 코멘트 등록 현황</span>
+                <span class="text3" >　<img src="images/icon/bullet01.png">  액션 코멘트 등록 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
                     <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
@@ -114,18 +117,20 @@
             </table></div><p></p>
             <div class="row clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-style" ng-click="">삭제
+                    <button type="button" class="btn btn-base" ng-click="">삭제
+                    </button>
+                    <button type="button" class="btn btn-base" ng-click="">수정
                     </button>
                     <button type="button" class="btn btn-style" ng-click="">열람
-                    </button>
-                    <button type="button" class="btn btn-style" ng-click="">수정
                     </button>
                 </div>
             </div>
         </div>
 
         <p></p>
-        <div class="list-header-option"><span class="text3" >　액션 코멘트 등록.수정.삭제</span></div>
+        <div class="list-header-option">
+            <span class="text3"> <img src="images/icon/bullet01.png" style="padding-left:15px;"> 액션 코멘트 등록.수정.삭제</span>
+        </div>
         <table class="table tb-list remove-margin contents-center">
             <tbody>
             <tr>
@@ -153,7 +158,7 @@
                     코멘트 형태
                 </th>
                 <td>
-                    <input type="text" placeholder="메세지/음성">
+                    <input class="form-control input-sm" type="text" placeholder="메세지/음성">
                 </td>
                 <th class="list-header-option text-center">
                     음성파일
@@ -167,7 +172,7 @@
                     메세지 내용 작성
                 </th>
                 <td colspan="4">
-                    <textarea style="width: 100%; height:150px">
+                    <textarea class="form-control" style="width: 100%; height:150px">
                     =========경보 발생 ============
                     '%발생시간'
 

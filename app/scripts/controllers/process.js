@@ -5,23 +5,65 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('userManageCtrl', function ($scope, executeResults) {
+    .controller('process', function ($scope, executeResults, $filter, ngTableParams) {
 //        alert("getList call");
-        $scope.getProcessList = function () {
+        var getProList = function () {
 
             executeResults.getProcessList().then(function (data) {
 //                alert(data);
-                $scope.processLists= data;
+                $scope.processLists = data;
                 console.log(data);
 
+            }).then(function () {
+                $scope.processTable = new ngTableParams({
+                    page: 1,            // show first page
+                    count: 5,
+                    sorting: {
+                        ocr_seq: 'desc'     // initial sorting
+                    }
+                }, {counts: [],
+                    total: $scope.processLists.length, // length of data
+                    getData: function ($defer, params) {
+                        // use build-in angular filter
+                        var orderedData = params.sorting() ?
+                            $filter('orderBy')($scope.processLists, params.orderBy()) :
+                            $scope.processLists;
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+            });
+
+        };
+
+        var getProList1 = function () {
+            executeResults.getActionList().then(function (data) {
+//                alert(data);
+                $scope.processedLists = data;
+                console.log(data);
+            }).then(function () {
+                $scope.processedTable = new ngTableParams({
+                    page: 1,            // show first page
+                    count: 5,
+                    sorting: {
+                        ocr_seq: 'desc'     // initial sorting
+                    }
+                }, {counts: [],
+                    total: $scope.processedLists.length, // length of data
+                    getData: function ($defer, params) {
+                        // use build-in angular filter
+                        var orderedData = params.sorting() ?
+                            $filter('orderBy')($scope.processedLists, params.orderBy()) :
+                            $scope.processedLists;
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
             });
 
             //alert("getList call");
-            executeResults.getActionList().then(function (data) {
-//                alert(data);
-                $scope.actionLists= data;
-                console.log(data);
-
-            });
         };
+        getProList();
+        getProList1();
     });
+

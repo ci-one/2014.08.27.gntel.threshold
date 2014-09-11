@@ -115,9 +115,7 @@ angular.module('gntelCqmsApp')
                 url: '/getOccurQltCnt'
             }).success(function (data) {
                     deferred.resolve(data.sending);
-                    for (var i = 0; i < data.sending.length; i++) {
-                        console.log("getOccurList 데이터" + i + " : " + data.sending[i].qlt_code +" 카운트"+data.sending[i].cnt);
-                    }
+
                 }
             );
             return deferred.promise;

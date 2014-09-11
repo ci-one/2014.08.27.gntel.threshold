@@ -3,10 +3,10 @@
  */
 'use strict';
 angular.module('gntelCqmsApp')
-    .controller('actionRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('detailRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
 
-        var getActionRegList = function () {
-            executeResults.getActionReg().then(function (data) {
+        var getDetailRegList = function () {
+            executeResults.getDetailReg().then(function (data) {
                 $scope.itemList = data;
                 for (var i = 0; i < data.length; i++) {
                     $scope.org_names.push(data[i].org_name);
@@ -32,15 +32,13 @@ angular.module('gntelCqmsApp')
                 });
             });
         };
-        getActionRegList();
+        getDetailRegList();
 
+        $scope.deleteDetailReg = function (org_code) {
 
-        $scope.deleteActReg = function (org_code) {
-
-            executeResults.deleteActReg(org_code).then(function () {
+            executeResults.deleteDetailReg(org_code).then(function () {
                 alert('삭제되었습니다.');
             })
         };
-
 
     });

@@ -6,7 +6,7 @@
 angular.module('gntelCqmsApp')
     .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
         $scope.org_names = [];
-        $scope.test={ text:'why'};
+
 
         var reloadTable = function(){
             $scope.selectedItem = null;

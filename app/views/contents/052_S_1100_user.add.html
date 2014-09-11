@@ -11,100 +11,161 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title>GNTEL - 대림산업</title>
+    <title>이용자 회원 가입</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/layout/contents.css">
+    <link rel="stylesheet" href="../../styles/layout/login.css">
     <!-- endbuild -->
 </head>
-<body ng-app="gntelCqmsApp" ng-controller="MainCtrl">
-<link rel="stylesheet" href="../../styles/layout/login.css">
+<body ng-app="gntelCqmsApp">
 
-<div class="login center-block">
-        <div class="row login-header">
-            <div class="pull-left">
-                <img src="../../images/logo/gnt-logo.png">
-            </div>
+<div class="contents-layout login-add" style="width:98%; height: 500px">
+    <!-- title ▼ -->
+    <div class="title-option">
+        　　　이용자 가입
+    </div>
+    <!-- title ▲ -->
+
+    <!-- contents ▼ -->
+    <div class="contents-background ">
+        <p style="padding-left:15px;"><strong class="text-danger">*</strong> 표시는 필수 입력 항목입니다.</p>
+        <!-- table ▼ -->
+        <table class="table table-bordered remove-margin">
+            <tbody>
+            <tr>
+                <th class="list-header-option text-center">이용자ID <strong class="text-danger">*</strong></th>
+                <td>
+                    <input type="id" class="form-control" style="float:left; width: 84%"/>
+                    <btn class="btn btn-sm btn-default" style="float:left; margin-top: 1px;margin-left:10px; box-shadow: 1px 2px 3px #999;">ID중복확인</btn>
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">비밀번호 <strong class="text-danger">*</strong></th>
+                <td><input type="password" class="form-control" placeholder="8~18자의 영문, 숫자 조합"/></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">비밀번호확인 <strong class="text-danger">*</strong></th>
+                <td><input type="password" class="form-control"/></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">성명 <strong class="text-danger">*</strong></th>
+                <td><input type="text" class="form-control"/></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">이용기관명 <strong class="text-danger">*</strong></th>
+                <td><select class="form-control">
+                    <option>이용기관명 선택</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">부서명</th>
+                <td><input type="text" class="form-control"/></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">직위명</th>
+                <td><input type="text" class="form-control"/></td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">회사 전화번호</th>
+                <td>
+                    <input type="text" class="form-control" style="float:left; width:30%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">회사 FAX</th>
+                <td>
+                    <input type="text" class="form-control" style="float:left; width:30%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">핸드폰</th>
+                <td>
+                    <select class="form-control" style="float:left; width:30%">
+                        <option>선택</option>
+                        <option>010</option>
+                        <option>011</option>
+                    </select>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">-</span>
+                    <input type="text" class="form-control" style="float:left; width:32%"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="list-header-option text-center">E-mail <strong class="text-danger">*</strong></th>
+                <td>
+                    <input type="EMAIL" class="form-control" style="float:left; width:30%"/>
+                    <span style="float:left; font-size:18px; margin:2px 5px">@</span>
+                    <input type="EMAIL" class="form-control" style="float:left; width:30%"/>
+                    <select class="form-control" style="float:left; margin-left: 10px; width:33%">
+                        <option>직접입력</option>
+                        <option>naver.com</option>
+                        <option>nate.com</option>
+                        <option>daum.net</option>
+                        <option>paran.com</option>
+                        <option>yahoo.co.kr</option>
+                        <option>empal.com</option>
+                        <option>hanmir.com</option>
+                        <option>hotmail.com</option>
+                        <option>korea.com</option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row" style="margin-top: 15px;">
             <div class="pull-right">
-                <h2>이용자 가입</h2>
+                <button class="btn btn-style"><span class="glyphicon glyphicon-ok"></span> 확인</button>
+                <button class="btn btn-base" style="margin-left:10px;"> 취소</button>
             </div>
         </div>
-    <table class="table table-bordered remove-margin">
-        <tbody>
-        <tr>
-            <th class="list-header-option">이용자ID</th>
-            <td class="list-contents-option"> <btn class="btn btn-default input-group-btn-custom">ID중복확인</btn></td>
-        </tr>
-        <tr>
-            <th class="list-header-option">성명</th>
-            <td class="list-contents-option"> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">이용기관명</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">부서명</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">직위명</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">회사 전화번호</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">회사 FAX</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">핸드폰</th>
-            <td> </td>
-        </tr>
-        <tr>
-            <th class="list-header-option">E-mail</th>
-            <td> </td>
-        </tr>
-
-        </tbody>
-    </table>
+    </div>
 </div>
-
-
-
-
 
 
 <!-- build:js(app) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="../../bower_components/jquery/dist/jquery.js"></script>
-<script src="../../bower_components/angular/angular.js"></script>
-<script src="../../bower_components/angular-resource/angular-resource.js"></script>
-<script src="../../bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="../../bower_components/angular-route/angular-route.js"></script>
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="../../scripts/app.js"></script>
+<script src="scripts/app.js"></script>
 <script src="scripts/services/code.services.js"></script>
 <script src="scripts/services/user.manage.services.js"></script>
 <script src="scripts/services/user.access.services.js"></script>
 <script src="scripts/services/user.org.services.js"></script>
-<script src="../../scripts/controllers/main.js"></script>
-<script src="../../scripts/controllers/user.manage.controller.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/user.manage.controller.js"></script>
 <script src="scripts/controllers/user.access.controller.js"></script>
 <script src="scripts/controllers/user.org.controller.js"></script>
 <!-- endbuild -->

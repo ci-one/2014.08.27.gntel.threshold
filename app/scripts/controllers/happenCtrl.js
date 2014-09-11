@@ -95,7 +95,4 @@ angular.module('gntelCqmsApp')
             });
         };
         getOccurQltCnt();
-
-
-
     });

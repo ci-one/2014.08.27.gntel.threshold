@@ -21,7 +21,7 @@ angular.module('gntelCqmsApp')
             }).then(function(){
                 $scope.memTable.reload()
             });
-        }
+        };
 
         var getCompMem = function () {
             executeResults.getCompMem().then(function (data) {

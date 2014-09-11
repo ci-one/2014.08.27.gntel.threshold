@@ -5,9 +5,7 @@
 'use strict';
 angular.module('gntelCqmsApp')
     .controller('happenCtrl', function ($scope, executeResults,$filter,ngTableParams) {
-
-        $scope.test={ text:'why'};
-
+        $scope.qlt_cnt=[];
 
         var getOccurTableList = function () {
             executeResults.getOccurList().then(function (data) {
@@ -36,9 +34,15 @@ angular.module('gntelCqmsApp')
         };
         getOccurTableList();
 
+
         var getOccurQltCnt =function(){
-            executeResults.getOccurQltCnt
+            executeResults.getOccurQltCnt().then(function(data){
+                for(var i=0;i<data.length;i++){
+                    $scope.qlt_cnt.push(data[i].cnt);
+                    console.log("qlt_cnt :"+ $scope.qlt_cnt[i]);
+                }
+            });
+        };
+        getOccurQltCnt();
 
-
-        }
     });

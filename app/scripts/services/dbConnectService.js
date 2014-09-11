@@ -1,3 +1,4 @@
+
 angular.module('gntelCqmsApp')
     .factory('executeResults', function ($http, $q) {
         var executeResults = {};
@@ -51,7 +52,7 @@ angular.module('gntelCqmsApp')
             $http({
                 method: 'post',
                 url: '/deleteUseComp',
-                data: {org_code:org_code}
+                data: {org_code: org_code}
             }).success(function (data) {
                     deferred.resolve(data);
 
@@ -83,30 +84,30 @@ angular.module('gntelCqmsApp')
                 url: '/getQltClassList'
             }).success(function (data) {
                     deferred.resolve(data.sending);
-                    for(var i=0;i<data.sending.length;i++){
-                        console.log("서비스 데이터"+i+" : "+data.sending[i].qlt_name+data.sending[i].qlt_code);
-                    }
+
 
                 }
             );
             return deferred.promise;
         };
 
-        executeResults.getOccurList = function () {
+       executeResults.getOccurList = function () {
             var deferred = $q.defer();
             $http({
                 method: 'post',
                 url: '/getOccurList'
             }).success(function (data) {
                     deferred.resolve(data.sending);
-                    for(var i=0;i<data.sending.length;i++){
-                        console.log("getOccurList 데이터"+i+" : "+data.sending[i].system_code+data.sending[i].qlt_code+data.sending[i].action_seq);
-                    }
+                 /*   for (var i = 0; i < data.sending.length; i++) {
+                        console.log("getOccurList 데이터3" + i + " : " + data.sending[i].system_code + data.sending[i].qlt_code + data.sending[i].action_seq);
+                    }*/
 
                 }
             );
             return deferred.promise;
         };
+
+
         executeResults.getOccurQltCnt = function () {
             var deferred = $q.defer();
             $http({
@@ -114,15 +115,13 @@ angular.module('gntelCqmsApp')
                 url: '/getOccurQltCnt'
             }).success(function (data) {
                     deferred.resolve(data.sending);
-                    for(var i=0;i<data.sending.length;i++){
-                        console.log("getOccurList 데이터"+i+" : "+data.sending[i].system_code+data.sending[i].qlt_code+data.sending[i].action_seq);
+                    for (var i = 0; i < data.sending.length; i++) {
+                        console.log("getOccurList 데이터" + i + " : " + data.sending[i].qlt_code +" 카운트"+data.sending[i].cnt);
                     }
                 }
             );
             return deferred.promise;
         };
-
-
 
 
         //기관맴버 획득
@@ -173,7 +172,6 @@ angular.module('gntelCqmsApp')
 
             return deferred.promise;
         };
-
 
 
         return executeResults;

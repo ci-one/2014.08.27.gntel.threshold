@@ -8,7 +8,7 @@
 <body style="text-align: center; width: 820px">
 <p></p>
 <div>
-    <div class="row clearfix list-header-option">
+    <div ng-controller="happenCtrl" class="row clearfix list-header-option">
         <div>
             <button type="button" class="btn btn-style" ng-click="">전체
             </button>
@@ -30,7 +30,7 @@
 <script src="/plugin/highcharts.js"></script>
 <script src="/plugin/exporting.js"></script>
 <script type="text/javascript">
-    $(function () {
+ $(function () {
         $('#container2').highcharts({
             chart: {
                 zoomType: 'xy'

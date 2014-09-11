@@ -28,6 +28,12 @@
                 <div ng-if="processGo!='기준'" style="float: left">
                     <button type="button" class="btn ccolor" ng-click="change('기준')">임계치 품질 상세 기준 항목</button>
                 </div>
+                <div ng-if="processGo=='수신자'" style="float: left">
+                    <button type="button" class="btn btn-style" ng-click="change('수신자')">임계치 수신자 등록</button>
+                </div>
+                <div ng-if="processGo!='수신자'" style="float: left">
+                    <button type="button" class="btn ccolor" ng-click="change('수신자')">임계치 수신자 등록</button>
+                </div>
             </div>
         </div>
 
@@ -41,6 +47,9 @@
         </div>
         <div ng-if="processGo=='기준'">
             <div style="border: 1px groove" ng-include="'views/contents/052-1230-CV_detail_reg.html'"></div>
+        </div>
+        <div ng-if="processGo=='수신자'">
+            <div style="border: 1px groove" ng-include="'views/contents/052-1240-CV_receiver_reg.html'"></div>
         </div>
 
 

@@ -5,7 +5,8 @@ var app = angular.module('gntelCqmsApp', [
     'ui.bootstrap',
     'autocomplete',
     'ngTable',
-    'wysiwyg.module'
+    'wysiwyg.module',
+    'highcharts-ng'
 ]);
 app.config(function ($routeProvider, $locationProvider) {
         $routeProvider

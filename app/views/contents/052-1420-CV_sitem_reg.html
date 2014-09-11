@@ -1,14 +1,17 @@
 <link rel="stylesheet" href="styles/layout/contents.css">
 <link rel="stylesheet" href="styles/autocomplete.css">
+<style>
+    .text3{font-size:14px; text-indent:15px; line-height:30px; font-weight:600;}
 
-<div class="contents-layout" ng-controller="sitemRegCtrl">
+</style>
+<div ng-controller="sitemRegCtrl"  style="margin:15px 0 0 0;">
 
     <div class="contents-background">
         <!-- list ▼ -->
         <div style="overflow-y: hidden;">
             <div class="row clearfix list-header-option">
                 <div style="float:left;">
-              <span class="text3" >　이용 기관 담당 등록 현황</span>
+              <span class="text3" ><img src="images/icon/bullet01.png" style="margin-left:15px;">　이용 기관 담당 등록 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
                     <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
@@ -52,7 +55,7 @@
         <p></p>
 
 
-        <div class="list-header-option"><span class="text3" >　이용기관 담당 등록</span></div>
+        <div class="list-header-option"><span class="text3" ><img src="images/icon/bullet01.png" style="margin-left:15px;">　이용기관 담당 등록</span></div>
         <table class="table tb-list remove-margin contents-center">
             <tbody>
             <tr>
@@ -87,10 +90,12 @@
                 <th class="list-header-option text-center">
                     부서명
                 </th>
-                <td>
+
+                <td class="text-left">
                     <div ng-if="thisMem.dep_name==null">
                         <autocomplete  ng-model="thisMem.dep_name" data="dep_names"  click-activation=true></autocomplete>
                     </div>
+
                     <div ng-if="thisMem.dep_name!=null">
                         {{thisMem.dep_name}}
                     </div>
@@ -98,7 +103,7 @@
                 <th class="list-header-option text-center">
                     직책
                 </th>
-                <td>
+                <td class="text-left">
                     <div ng-if="thisMem.role_name==null">
                         <autocomplete  ng-model="thisMem.role_name" data="role_names"  click-activation=true></autocomplete>
                     </div>
@@ -125,15 +130,13 @@
                 <th class="list-header-option text-center">
                     참고사항
                 </th>
-                <td colspan="3">
+                <td colspan="3" class="text-left">
                     <wysiwyg textarea-id="question" id="wys" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required  ng-model="thisMem.mem_notice" enable-bootstrap-title="true"></wysiwyg>
                 </td>
             </tr>
             <tr>
-                <th class="list-header-option text-center">
-                </th>
-                <td colspan="3">
-                    <button type="button" class="btn btn-style" ng-click="">저장
+                <td colspan="4">
+                    <button type="button" class="btn btn-style pull-right" ng-click="">저장
                     </button>
                 </td>
             </tr>

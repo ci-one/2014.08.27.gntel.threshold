@@ -1,6 +1,3 @@
-<script src="plugin/highcharts.js"></script>
-<script src="plugin/exporting.js"></script>
-
 
 <link rel="stylesheet" href="styles/layout/contents.css">
 
@@ -13,7 +10,7 @@
     <!-- title ▲ -->
 
     <!-- contents ▼ -->
-    <div ng-controller="process" class="contents-background">
+    <div class="contents-background">
         <div class="row clearfix list-header-option">
             <span class="text3">　임계치 처리현황</span>
 
@@ -23,7 +20,6 @@
             </div>
         </div>
         <!-- search ▼ -->
-        <!--<iframe src="/views/contents/052-1110-CV_process.list.html" style="width:850px;height:320px;"></iframe>-->
         <div ng-include='"/views/contents/052-1110-CV_process.list.html"'></div>
         <!-- search ▲ -->
 
@@ -39,7 +35,6 @@
             </div>
         </div>
         <!-- search ▼ -->
-        <!--<iframe src="/views/contents/052-1110-CV_processed.list.html" style="width:850px;height:320px;"></iframe>-->
         <div ng-include='"/views/contents/052-1110-CV_processed.list.html"'></div>
 
     </div>

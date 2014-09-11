@@ -63,12 +63,25 @@ angular.module('gntelCqmsApp')
 
 
         //채영범 사원원 TEST 프로그래밍
-        executeResults.insertQltClass = function (inputData) {
+        executeResults.insertStanRegItem = function (inputData) {
             var deferred = $q.defer();
 
             $http({
                 method: 'post',
-                url: '/insertQltClass',
+                url: '/insertStanRegItem',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.insertStanReg = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/insertStanReg',
                 data: inputData
             }).success(function (data) {
                     deferred.resolve(data);
@@ -170,7 +183,108 @@ angular.module('gntelCqmsApp')
 
             return deferred.promise;
         };
+        // 임계치 처리현황 - 임계치 처리현황 리스트
+        executeResults.getProcessList = function () {
+            var deferred = $q.defer();
 
+            $http({
+                    method: 'post',
+                    url: '/getProcessList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
 
+            return deferred.promise;
+        };
+        // 임계치 처리현황 - 임계치 처리현황 리스트
+        executeResults.getProcessList = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getProcessList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+        // 임계치 처리현황 - 임계치 처리현황 리스트
+        executeResults.getProcessList = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getProcessList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+        //임계치 기준정보 관리-임계치 품질 등록
+        executeResults.getStandardReg = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getStandardReg'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                    console.log(data)
+                }
+            );
+
+            return deferred.promise;
+        };
+        executeResults.getActionReg = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getActionReg'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                    console.log("getActionReg")
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getActionRegList = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getActionRegList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending)
+                    console.log("getActionRegList")
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getDetailReg = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getDetailReg'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                    console.log("getDetailReg")
+                }
+            );
+            return deferred.promise;
+        };
         return executeResults;
     });

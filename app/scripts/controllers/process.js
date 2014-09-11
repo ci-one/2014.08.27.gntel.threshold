@@ -33,7 +33,7 @@ angular.module('gntelCqmsApp')
 
         };
 
-        var getProList1 = function () {
+        var getActList = function () {
             executeResults.getActionList().then(function (data) {
                 $scope.processedLists = data;
             }).then(function () {
@@ -59,6 +59,6 @@ angular.module('gntelCqmsApp')
             //alert("getList call");
         };
         getProList();
-        getProList1();
+        //getActList();
     });
 

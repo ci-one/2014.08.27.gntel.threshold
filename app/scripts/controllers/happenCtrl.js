@@ -4,7 +4,7 @@
 
 'use strict';
 angular.module('gntelCqmsApp')
-    .controller('happenCtrl', function ($scope, executeResults,$filter,ngTableParams) {
+    .controller('happenCtrl', function ($scope, executeResults, $filter, ngTableParams) {
         $scope.qlt_cnt=[];
 
         var getOccurTableList = function () {
@@ -39,10 +39,65 @@ angular.module('gntelCqmsApp')
             executeResults.getOccurQltCnt().then(function(data){
                 for(var i=0;i<data.length;i++){
                     $scope.qlt_cnt.push(data[i].cnt);
-                    console.log("qlt_cnt :"+ $scope.qlt_cnt[i]);
                 }
+
+            }).then(function(){
+                console.log("qlt_cnt :"+ $scope.qlt_cnt);
+                $('#container2').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    xAxis: [
+                        {
+                            categories: ['fatal', 'critical', 'major', 'minor', 'warning', 'danger', 'normal']
+                        }
+                    ],
+                    yAxis: [
+                        { // Primary yAxis
+                            labels: {
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            },
+                            title: {
+                                text: '횟수',
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            }
+                        }
+                    ],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 120,
+                        verticalAlign: 'top',
+                        y: 100,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    series: [
+                        {
+                            name: '발생횟수',
+                            type: 'column',
+                            data: [$scope.qlt_cnt],
+                            tooltip: {
+                                valueSuffix: ' 번'
+                            }
+
+                        }
+                    ]
+                });
             });
         };
         getOccurQltCnt();
+
+
 
     });

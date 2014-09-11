@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
-</head>
-<body style="text-align: center; width: 820px">
+
 <p></p>
-<div>
-    <div ng-controller="happenCtrl" class="row clearfix list-header-option">
+
+<div ng-controller="happenCtrl" >
+    <div class="row clearfix list-header-option">
         <div>
             <button type="button" class="btn btn-style" ng-click="">전체
             </button>
@@ -24,67 +18,7 @@
 
     </div>
     <div id="container2" style="min-width: 240px; height: 400px; margin: 0 auto"></div>
-
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="/plugin/highcharts.js"></script>
 <script src="/plugin/exporting.js"></script>
-<script type="text/javascript">
- $(function () {
-        $('#container2').highcharts({
-            chart: {
-                zoomType: 'xy'
-            },
-            title: {
-                text: ''
-            },
-            xAxis: [
-                {
-                    categories: ['fatal', 'critical', 'major', 'minor', 'warning', 'danger', 'normal']
-                }
-            ],
-            yAxis: [
-                { // Primary yAxis
-                    labels: {
-                        style: {
-                            color: Highcharts.getOptions().colors[1]
-                        }
-                    },
-                    title: {
-                        text: '횟수',
-                        style: {
-                            color: Highcharts.getOptions().colors[1]
-                        }
-                    }
-                }
-            ],
-            tooltip: {
-                shared: true
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                x: 120,
-                verticalAlign: 'top',
-                y: 100,
-                floating: true,
-                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-            },
-            series: [
-                {
-                    name: '발생횟수',
-                    type: 'column',
-                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 176.0],
-                    tooltip: {
-                        valueSuffix: ' 번'
-                    }
-
-                }
-            ]
-        });
-    });
-
-
-</script>
-</body>
-</html>

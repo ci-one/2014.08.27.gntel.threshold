@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
 
-
 <div class="" ng-controller="process">
 
     <table ng-table="processTable" class="table table-striped table-bordered">
+
         <tr ng-repeat="item in $data" style="cursor:pointer" class="text-center">
             <td data-title="'기관명'" sortable="'org_code'">
                 {{item.comLocation}}

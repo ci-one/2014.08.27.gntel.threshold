@@ -12,13 +12,14 @@
                 이용기관 명
             </th>
             <td>
-                <autocomplete  ng-model="useSource.org_name" data="org_names"
-                               on-type="updateOrgName" click-activation =true></autocomplete>
-            </td>
-            <td rowspan="2">
-                <button type="button" class="btn btn-style" style="margin: 50px 15px;" ng-click="">저장
+                <select class="form-control" ng-click="useSource.org_code" readonly>
+                    <option ng-repeat="name in org_names" class="center-detail" value="{{name.org_code}}">{{name.org_name}}</option>
+                </select>
+            </td><!--ng-model="useSource.org_name"-->
+            <td rowspan="2">{{useSource.org_code}}
+                <button type="button" class="btn btn-style" style="margin: 50px 15px;" ng-click="saveSrc()">저장
                 </button>
-                <button type="button" class="btn btn-style" style="margin: 50px 15px;" ng-click="">삭제
+                <button type="button" class="btn btn-style" ng-click="deleteSrc(selectedItem.source_code)" ng-confirm-click="정말 삭제하시겠습니까?">삭제
                 </button>
             </td>
         </tr>
@@ -28,7 +29,7 @@
             </th>
             <td>
                 <autocomplete  ng-model="useSource.source_code" data="source_codes"
-                               on-type="updateOrgName" click-activation =true></autocomplete>
+                               on-type="updateSrcName" click-activation =true></autocomplete>
             </td>
         </tr>
         </tbody>
@@ -49,7 +50,7 @@
         </div>
         <div style="overflow-y: scroll;height: 200px">
             <table ng-table="srcTable" class="table table-bordered">
-                <tr ng-repeat="src in $data" ng-click="selectComp($index); src.$selected = !src.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': src.$selected}">
+                <tr ng-repeat="src in $data" ng-click="selectSrc($index); src.$selected = !src.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': src.$selected}">
                     <td data-title="'이용기관 명'" sortable="'org_name'">
                         {{src.org_name}}
                     </td>

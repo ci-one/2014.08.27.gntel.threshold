@@ -5,12 +5,10 @@
 
 angular.module('gntelCqmsApp')
     .controller('sourceRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
-        $scope.org_names = [];
         $scope.source_codes = [];
-        var getCompList = function () {
+        var getSrcList = function () {
             executeResults.getUseComp().then(function (data) {
-                for (var i = 0; i < data.length; i++)
-                    $scope.org_names.push(data[i].org_name);
+                    $scope.org_names = data;
             }).then(function () {
                 executeResults.getSource().then(function (data) {
                     for (var i = 0; i < data.length; i++)
@@ -38,39 +36,51 @@ angular.module('gntelCqmsApp')
             });
 
         };
-        getCompList();
+        getSrcList();
 
-        $scope.selectComp = function (index) {
-            $scope.selectedItem = $scope.tableParams.data[index];
+        var reloadTable = function(){
+            $scope.useSource = null;
+            executeResults.getSource().then(function (data) {
+                $scope.itemList = data;
+                for (var i = 0; i < data.length; i++) {
+                    $scope.source_codes.push(data[i].source_code);
+                }
+                //$scope.updateOrgName();
+            }).then(function(){
+                $scope.srcTable.reload()
+            });
         };
 
-        $scope.deleteComp = function (org_code) {
-            executeResults.deleteUseComp(org_code).then(function () {
+        $scope.selectSrc = function (index) {
+            if ($scope.srcTable.data[index] == null)
+                $scope.useSource = $scope.itemList[index];
+            else {
+                $scope.useSource = $scope.srcTable.data[index];
+            }
+        };
+
+        $scope.deleteSrc = function (source_code) {
+            executeResults.deleteSource(source_code).then(function () {
                 alert('삭제되었습니다.');
-                getCompList();
+                reloadTable();
             })
         };
 
         $scope.viewComp = function (org_code) {
         };
 
-        var clear = function () {
-            $scope.useComp = null;
-            $scope.selectedItem = null;
-        };
-
-        $scope.saveComp = function () {
-            executeResults.insertUseComp($scope.useComp).then(function () {
+        $scope.saveSrc = function () {
+            executeResults.insertSource($scope.useSource).then(function () {
                 alert('이용기관을 추가하였습니다.');
-                getCompList();
+                reloadTable();
             })
         };
 
         //자동완성
-        $scope.updateOrgName = function (typed) {
-            $scope.neworg_names = MovieRetriever.getmovies(typed);
-            $scope.neworg_names.then(function (data) {
-                $scope.org_names = data;
+        $scope.updateSrcName = function (typed) {
+            $scope.newsource_codes = MovieRetriever.getmovies(typed);
+            $scope.newsource_codes.then(function (data) {
+                $scope.source_codes = data;
             });
         }
     });

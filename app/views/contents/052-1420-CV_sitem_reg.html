@@ -21,7 +21,7 @@
             <table ng-table="memTable" class="table table-striped table-bordered">
                 <tr ng-repeat="mem in $data" ng-click="selectMem($index);" class="text-center">
                     <td data-title="'이용기관 명'" sortable="'org_name'">
-                        대림산업
+                        {{mem.org_name}}
                     </td>
                     <td data-title="'담당자 명'" sortable="'mem_name'">
                         {{mem.mem_name}}
@@ -63,7 +63,9 @@
                     이용 기관 명
                 </th>
                 <td>
-                    <input type="text" value="대림산업" readonly class="form-control">
+                    <select class="form-control" ng-model="thisMem.org_code" readonly>
+                        <option ng-repeat="name in org_names" class="center-detail" value="{{name.org_code}}">{{name.org_name}}</option>
+                    </select>
                 </td>
                 <th class="list-header-option text-center">
                     개인 ID
@@ -92,23 +94,16 @@
                 </th>
 
                 <td class="text-left">
-                    <div ng-if="thisMem.dep_name==null">
-                        <autocomplete  ng-model="thisMem.dep_name" data="dep_names"  click-activation=true></autocomplete>
-                    </div>
-
-                    <div ng-if="thisMem.dep_name!=null">
-                        {{thisMem.dep_name}}
+                    <div>
+                        <autocomplete  ng-model="thisMem.dep_name" data="dep_names" on-type="updateDepName"  click-activation=true></autocomplete>
                     </div>
                 </td>
                 <th class="list-header-option text-center">
                     직책
                 </th>
                 <td class="text-left">
-                    <div ng-if="thisMem.role_name==null">
-                        <autocomplete  ng-model="thisMem.role_name" data="role_names"  click-activation=true></autocomplete>
-                    </div>
-                    <div ng-if="thisMem.role_name!=null">
-                        {{thisMem.role_name}}
+                    <div>
+                        <autocomplete  ng-model="thisMem.role_name" data="role_names" on-type="updateRoleName"  click-activation=true></autocomplete>
                     </div>
                 </td>
             </tr>
@@ -136,7 +131,7 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    <button type="button" class="btn btn-style pull-right" ng-click="">저장
+                    <button type="button" class="btn btn-style pull-right" ng-click="saveMem()">저장
                     </button>
                 </td>
             </tr>

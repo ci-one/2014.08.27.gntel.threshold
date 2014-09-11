@@ -109,6 +109,194 @@ angular.module('gntelCqmsApp')
         };
 
 
+        //타겟 등록 관련
+        executeResults.getTarget = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getTarget'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
+        executeResults.insertTarget = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/insertTarget',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.updateTarget = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/updateTarget',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.deleteTarget = function (target_code) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/deleteTarget',
+                data: {target_code: target_code}
+            }).success(function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+            return deferred.promise;
+        };
+
+        //담당 등록 관련
+        executeResults.getCompMem = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/getCompMem'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getDept = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/getDept'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getRole = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/getRole'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.insertDept = function (dep_name) {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/insertDept',
+                data: {dep_name: dep_name}
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.insertRole = function (role_name) {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/insertRole',
+                data: {role_name: role_name}
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.getDepOne = function (dep_name) {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/getDepOne',
+                data: {dep_name: dep_name}
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.getRoleOne = function (role_name) {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/getRoleOne',
+                data: {role_name: role_name}
+            }).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.insertCompMem = function (inputData) {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/insertCompMem',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.updateCompMem = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/updateCompMem',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.deleteCompMem = function (mem_code) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/deleteCompMem',
+                data: {mem_code: mem_code}
+            }).success(function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 
@@ -186,21 +374,6 @@ angular.module('gntelCqmsApp')
         };
 
 
-        //기관맴버 획득
-        executeResults.getCompMem = function () {
-            var deferred = $q.defer();
-
-            $http({
-                    method: 'post',
-                    url: '/getCompMem'
-                }
-            ).success(function (data) {
-                    deferred.resolve(data.sending);
-                }
-            );
-
-            return deferred.promise;
-        };
 
 
         // 임계치 처리현황 - 임계치 처리현황 리스트

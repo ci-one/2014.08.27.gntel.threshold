@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/styles/layout/contents.css" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="../../styles/autocomplete.css">
+
+<div class="contents-layout" ng-controller="sourceRegCtrl">
+
+    <!-- contents ▼ -->
+    <div class="list-header-option"><span class="text3" >　이용기관 소스 등록</span></div>
+    <table class="table tb-list remove-margin contents-center">
+        <tbody>
+        <tr>
+            <th class="list-header-option text-center">
+                이용기관 명
+            </th>
+            <td>
+                <autocomplete  ng-model="useSource.org_name" data="org_names"
+                               on-type="updateOrgName" click-activation =true></autocomplete>
+            </td>
+            <td rowspan="2">
+                <button type="button" class="btn btn-style" style="margin: 50px 15px;" ng-click="">저장
+                </button>
+                <button type="button" class="btn btn-style" style="margin: 50px 15px;" ng-click="">삭제
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th class="list-header-option text-center">
+                소스등록
+            </th>
+            <td>
+                <autocomplete  ng-model="useSource.source_code" data="source_codes"
+                               on-type="updateOrgName" click-activation =true></autocomplete>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <p></p>
+    <!-- list ▼ -->
+    <div>
+        <div class="row clearfix list-header-option">
+            <div style="float:left;">
+             <span class="text3" >　이용기관 소스 등록 현황</span>
+            </div>
+            <div class="pull-right" style="float:left;">
+                <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                </button>
+            </div>
+        </div>
+        <div style="overflow-y: scroll;height: 200px">
+            <table ng-table="srcTable" class="table table-bordered">
+                <tr ng-repeat="src in $data" ng-click="selectComp($index); src.$selected = !src.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': src.$selected}">
+                    <td data-title="'이용기관 명'" sortable="'org_name'">
+                        {{src.org_name}}
+                    </td>
+                    <td data-title="'소스'" sortable="'source_code'">
+                        {{src.source_code}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- list ▲ -->
+    </div>
+    <div class="row clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-style" ng-click="">열람
+            </button>
+        </div>
+    </div>
+    <!-- search ▲ -->
+    <!-- contents ▲ -->
+</div>

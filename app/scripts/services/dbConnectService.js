@@ -3,6 +3,7 @@ angular.module('gntelCqmsApp')
     .factory('executeResults', function ($http, $q) {
         var executeResults = {};
 
+        //이용기관 등록 관련
         executeResults.getUseComp = function () {
             var deferred = $q.defer();
 
@@ -60,6 +61,56 @@ angular.module('gntelCqmsApp')
             );
             return deferred.promise;
         };
+
+
+        //소스 등록 관련
+        executeResults.getSource = function () {
+            var deferred = $q.defer();
+
+            $http({
+                    method: 'post',
+                    url: '/getSource'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
+        executeResults.insertSource = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/insertSource',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.deleteSource = function (source_code) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/deleteSource',
+                data: {source_code: source_code}
+            }).success(function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
+
 
 
         //채영범 사원원 TEST 프로그래밍

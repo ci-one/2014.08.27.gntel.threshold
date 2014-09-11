@@ -1,18 +1,14 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
 <link rel="stylesheet" href="../../styles/autocomplete.css">
-<style>
-    .text3{font-size:14px; text-indent:15px; line-height:30px; font-weight:600;}
 
-</style>
-
-<div ng-controller="compRegCtrl" style="margin:15px 0 0 0;">
+<div class="contents-layout" ng-controller="compRegCtrl">
 
     <div class="contents-background">
         <!-- list ▼ -->
         <div style="overflow-y: hidden;">
             <div class="row clearfix list-header-option">
                 <div style="float:left;">
-                    <span class="text3"><img src="images/icon/bullet01.png" style="margin-left:15px;">　이용 기관 현황</span>
+                    <span class="text3">　이용 기관 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
                     <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
@@ -24,8 +20,8 @@
                     <td data-title="'이용기관 명'" sortable="'org_name'">
                         {{comp.org_name}}
                     </td>
-                    <td data-title="'이용 기관 시군구'" sortable="'city_code'">
-                        {{comp.city_code}}
+                    <td data-title="'이용 기관 시군구'" sortable="'city_name'">
+                        {{comp.city_name}}
                     </td>
                     <td data-title="'이용기관 전화번호'" sortable="'org_tel'">
                         {{comp.org_tel}}
@@ -51,15 +47,16 @@
         <p></p>
 
 
-        <div class="list-header-option"><span class="text3"><img src="images/icon/bullet01.png" style="margin-left:15px;">　이용기관 등록</span></div>
+        <div class="list-header-option"><span class="text3">　이용기관 등록</span></div>
         <table class="table tb-list remove-margin contents-center">
             <tbody>
             <tr>
                 <th class="list-header-option text-center">
-                    이용<br />기관 명
+                    이용기관 명
                 </th>
                 <td>
-                    <div class="autocomplete " id="">          <input type="text" ng-model="searchParam" placeholder="내용을 입력하세요" class="form-control input-sm" id="">          <ul ng-show="completing &amp;&amp; suggestions.length>0" class="ng-hide">            <!-- ngRepeat: suggestion in suggestions | filter:searchFilter | orderBy:'toString()' track by $index --><li suggestion="" ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:'toString()' track by $index" index="0" val="대림산업1" ng-class="{ active: ($index === selectedIndex) }" ng-click="select(suggestion)" ng-bind-html="suggestion | highlight:searchParam" class="ng-binding ng-scope">대림산업1</li><!-- end ngRepeat: suggestion in suggestions | filter:searchFilter | orderBy:'toString()' track by $index -->          </ul>        </div>
+                    <autocomplete  ng-model="useComp.org_name" data="org_names"
+                                   on-type="updateOrgName" click-activation =true></autocomplete>
                 </td>
                 <th class="list-header-option text-center">
                     이용기관 코드
@@ -76,13 +73,13 @@
                     회사 대표연락처
                 </th>
                 <td>
-                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_tel" class="form-control input-sm">
+                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_tel">
                 </td>
                 <th class="list-header-option text-center">
                     회사 FAX
                 </th>
                 <td>
-                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_fax" class="form-control input-sm">
+                    <input type="text" placeholder="000-0000-0000" ng-model="useComp.org_fax">
                 </td>
             </tr>
             <tr>
@@ -90,31 +87,30 @@
                     이용기관 시군구
                 </th>
                 <td>
-                    <input type="text" ng-model="useComp.city_name" class="form-control input-sm">
+                    <input type="text" ng-model="useComp.city_name">
                 </td>
                 <th class="list-header-option text-center">
                     상세주소
                 </th>
                 <td>
-                    <input type="text" ng-model="useComp.addr_code" class="form-control input-sm">
+                    <input type="text" style="width: 250px" ng-model="useComp.addr_code">
                 </td>
             </tr>
             <tr>
                 <th class="list-header-option text-center">
-                    메세지<br /> 내용 작성
+                    메세지 내용 작성
                 </th>
-                <td colspan="3" class="text-left">
+                <td colspan="3">
                     <wysiwyg textarea-id="question" id="wys" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required  ng-model="useComp.notice" enable-bootstrap-title="true"></wysiwyg>
                 </td>
             </tr>
-<tr>
-    <td colspan="4">
-             <button type="button" class="btn btn-style pull-right"  ng-click="saveComp()">저장
-                </button>
-    </td>
+            <tr>
+                <th class="list-header-option text-center"></th>
+                <td colspan="3"><button type="button" class="btn btn-style" ng-click="saveComp()">저장
+                </button></td>
             </tr>
-    </tbody>
-    </table>
+            </tbody>
+        </table>
 
 
     </div>

@@ -355,9 +355,6 @@ angular.module('gntelCqmsApp')
         };
 
 
-
-
-
         //채영범 사원원 TEST 프로그래밍
         executeResults.insertStanRegItem = function (inputData) {
             var deferred = $q.defer();
@@ -385,6 +382,21 @@ angular.module('gntelCqmsApp')
             );
             return deferred.promise;
         };
+
+        executeResults.updateActReg = function (action_seq, action_code) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/updateActReg',
+                data: {action_code:action_code,action_seq:action_seq}
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
 
         executeResults.getQltClassList = function () {
             var deferred = $q.defer();

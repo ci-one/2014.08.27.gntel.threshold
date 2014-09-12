@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
 
-<div  class="contents-layout">
+<div  ng-controller="actionRegCtrl"  class="contents-layout" >
 
 
     <!-- contents ▼ -->
     <div class="contents-background">
         <!-- search ▼ -->
-        <div ng-controller="standardRegCtrl">
+        <div>
         <div  style="overflow-y: scroll;height: 180px">
             <div class="list-header-option"><span class="text3">　임계치 품질 현황</span></div>
            <!-- <table ng-table="ActRegTable"
@@ -27,15 +27,17 @@
 
                 </tbody>
             </table>-->
+
             <table   ng-table="stanRegTable"  class="table tb-list table-hover table-condensed table-bordered list-option text-center">
                 <tbody class="text-center list-contents-option">
                 <tr ng-repeat="item in $data" style="cursor:pointer" class="text-center"
                     ng-click="selectItem($index); item.$selected = !item.$selected;" ng-class="{'active': item.$selected}">
-                    <td data-title="' 관리항목'" sortable="'org_code'">
+                    <td data-title="' 관리항목'" sortable="'thrs_item_name'">
                         {{item.thrs_item_name}}
                     </td>
-                    <td data-title="'품질등급'" sortable="'system_code'">
+                    <td data-title="'품질등급'" sortable="'qlt_name'">
                         {{item.qlt_name}}
+
                     </td>
                 </tr>
                 </tbody>
@@ -71,7 +73,7 @@
                         품질액션 등급 　
                     </th>
                     <td>
-                        <select ng-model="" class="form-control">
+                        <select ng-model="action_code" class="form-control">
                             <option>코드 | 액션 명</option>
                             <option value="1">1 | 경보</option>
                             <option value="2">2 | 문자발송</option>
@@ -80,7 +82,7 @@
                         </select>
                     </td>
                     <td colspan="2">
-                        <button type="button" class="btn btn-style" ng-click="save(selectedItem.action_seq)">저장
+                        <button type="button" class="btn btn-style" ng-click="saveActReg(selectedItem.action_seq,action_code)">저장
                         </button>
                     </td>
                 </tr>
@@ -93,7 +95,7 @@
         <div>
             <div class="row clearfix list-header-option">
                 <div style="float:left;">
-                    <span class="text3">　임계치 품질 액션 등록.수정.삭제 현황</span>
+                    <span class="text3">　임계치 품질 액션 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
                     <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
@@ -101,24 +103,18 @@
                 </div>
             </div>
             <div style="overflow-y: scroll;height: 200px">
-                <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-                    <thead>
+                <table ng-table="ActionRegTable"  class="table tb-list table-hover table-condensed table-bordered list-option text-center">
                     <tr ng-repeat="item in $data" style="cursor:pointer" class="text-center">
-                        <td data-title="'임계치 관리 항목'" sortable="'org_code'">
-                            {{item.org_code}}
+                        <td data-title="'임계치 관리 항목'" sortable="'thrs_item_name'">
+                            {{item.thrs_item_name}}
                         </td>
-                        <td data-title="'품질 항목'" sortable="'system_code'">
-                            {{item.system_code}}
+                        <td data-title="'품질 항목'" sortable="'qlt_name'">
+                            {{item.qlt_name}}
                         </td>
-                        <td data-title="'액션 명'" sortable="'system_code'">
-                            {{item.system_code}}
+                        <td data-title="'액션 명'" sortable="'action_name'">
+                            {{item.action_name}}
                         </td>
                     </tr>
-                    </thead>
-                    <tbody class="text-center list-contents-option">
-
-                    </tbody>
-
                 </table>
             </div>
             <!-- list ▲ -->
@@ -133,3 +129,4 @@
         </div>
         <!-- list ▲ -->
     </div>
+</div>

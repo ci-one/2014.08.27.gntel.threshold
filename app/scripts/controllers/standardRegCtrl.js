@@ -6,15 +6,14 @@ angular.module('gntelCqmsApp')
     .controller('standardRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
 
         $scope.item_names = [];
-
         var reloadTable = function(){
             $scope.selectedItem = null;
-            executeResults.getStandardReg().then(function (data) {
+            executeResults.getActionReg().then(function (data) {
                 $scope.itemList = data;
 
                 //$scope.updateOrgName();
             }).then(function(){
-                $scope.stanRegTable.reload()
+                $scope.ActionRegTable.reload()
             });
         };
 
@@ -31,7 +30,7 @@ angular.module('gntelCqmsApp')
                     page: 1,            // show first page
                     count: 5,
                     sorting: {
-                        org_name: 'desc'     // initial sorting
+
                     }
                 }, {counts: [],
                     total: $scope.itemList.length, // length of data
@@ -76,12 +75,6 @@ angular.module('gntelCqmsApp')
             }
 
         };
-        $scope.saveActionReg = function (index) {
-            executeResults.insertStanReg(index).then(function(){
-                
-            });
-        };
-
 
         //자동완성
         $scope.updateItemName = function (typed) {

@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('sourceRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('sourceRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
         $scope.source_codes = [];
         var getSrcList = function () {
             executeResults.getUseComp().then(function (data) {
@@ -37,6 +37,31 @@ angular.module('gntelCqmsApp')
 
         };
         getSrcList();
+
+        $scope.exportsProcess = function(){
+            console.log($scope.itemList);
+            var item = [['기관코드','이용기관명','소스']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].org_code);
+                aaa.push($scope.itemList[i].org_name);
+                aaa.push($scope.itemList[i].source_code);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+        };
 
         var reloadTable = function(){
             $scope.useSource = null;

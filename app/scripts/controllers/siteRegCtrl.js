@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('siteRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('siteRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
         $scope.modified = false;
         $scope.target_names = [];
         var getTarList = function () {
@@ -103,4 +103,33 @@ angular.module('gntelCqmsApp')
                 $scope.target_names = data;
             });
         }
+
+
+        $scope.exportsProcess = function(){
+            console.log($scope.itemList);
+
+            var item = [['기관코드','이용기관명','타겟','타겟명','메세지']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].org_code);
+                aaa.push($scope.itemList[i].org_name);
+                aaa.push($scope.itemList[i].target_code);
+                aaa.push($scope.itemList[i].target_name);
+                aaa.push($scope.itemList[i].target_notice);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+        };
     });

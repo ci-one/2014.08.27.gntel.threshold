@@ -6,7 +6,7 @@ angular.module('gntelCqmsApp')
     .controller('standardRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
 
         $scope.item_names = [];
-        
+
 
         var getStandardRegList = function () {
             executeResults.getStandardReg().then(function (data) {

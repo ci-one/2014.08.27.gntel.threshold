@@ -44,4 +44,11 @@ angular.module('gntelCqmsApp')
             $rootScope.layout = false;
             $location.url('/');
         };
+    }).controller('sideCtrl',function($scope){
+        var d = new Date();
+        $scope.year = d.getFullYear();
+        $scope.month = d.getMonth() + 1;
+        $scope.day = d.getDate();
+        $scope.time = d.getHours();
+        $scope.min = d.getMinutes();
     });

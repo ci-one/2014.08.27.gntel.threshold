@@ -3,7 +3,7 @@
     .text3{font-size:14px; text-indent:15px; line-height:30px; font-weight:600;}
 
 </style>
-<div class="contents-layout">
+<div class="contents-layout" ng-controller="sysRegCtrl">
 <div class="title-option">
     　　　이용기관 사용시스템
 </div>
@@ -15,70 +15,30 @@
         <span class="text3" ><img src="images/icon/bullet01.png" style="margin-left:15px;">　이용기관 사용시스템</span>
         </div>
         <div class="pull-right" style="float:left;">
-            <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+            <button type="button" class="btn btn-style" ng-click="exportsProcess()">액셀로 내보내기
             </button>
         </div>
     </div>
-    <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-        <thead>
-        <tr>
-            <th class="list-header-option">
-                이용 기관 명 ▣
-            </th>
-            <th class="list-header-option">
-                이용기관 현장 명 ▣
-            </th>
-            <th class="list-header-option">
-                사용시스템 명 ▣
-            </th>
-        </tr>
-        </thead>
-        <tbody class="text-center list-contents-option">
-        <tr>
-            <td>
-                대림산업
+    <table ng-table="sysTable" class="table table-bordered">
+        <tr ng-repeat="sys in $data" ng-click="selectSys($index); sys.$selected = !sys.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': sys.$selected}">
+            <td data-title="'이용기관 명'" sortable="'org_name'">
+                {{sys.org_name}}
             </td>
-            <td>
-                인천 송도 배수장
-            </td>
-            <td>
-                임계치관리 시스템 1
+            <td data-title="'사용시스템 명'" sortable="'sys_name'">
+                {{sys.sys_name}}
             </td>
         </tr>
-        <tr>
-            <td>
-                대림산업1
-            </td>
-            <td>
-                인천 송도 배수장1
-            </td>
-            <td>
-                임계치관리 시스템 2
-            </td>
-        </tr>
-        <tr>
-            <td>
-                대림산업2
-            </td>
-            <td>
-                인천 송도 배수장2
-            </td>
-            <td>
-                임계치관리 시스템 3
-            </td>
-        </tr>
-        </tbody>
     </table>
     <!-- list ▲ -->
-    <div class="row clearfix">
+    <div class="row clearfix"><div ng-if="selectedItem!=null" class="h4" style="float: left">선택 사용시스템 명 : {{selectedItem.sys_name}}　</div>
         <div class="pull-right">
-            <button type="button" class="btn btn-style" ng-click="">삭제
+            <button type="button" class="btn btn-style" ng-click="deleteSys()">삭제
             </button>
             <button type="button" class="btn btn-style" ng-click="">열람
             </button>
-            <button type="button" class="btn btn-style" ng-click="">수정
+            <button type="button" class="btn btn-style" ng-click="modifySys()">수정
             </button>
-            <button type="button" class="btn btn-style" ng-click="">신규
+            <button type="button" class="btn btn-style" ng-click="clearSys()">신규
             </button>
         </div>
     </div>
@@ -94,20 +54,10 @@
         <th class="list-header-option text-center">
             이용 기관 명
         </th>
-        <td>
-            <select ng-options="" class="form-control">
-                <option class="center-detail">이용기관 명 | 이용기관 현장명</option>
-                <option value="all">대림산업1 | A현장</option>
-                <option value="all">대림산업2 | B현장</option>
-                <option value="all">대림산업3 | C현장</option>
-                <option value="all">◎ 신규등록</option>
+        <td colspan="3">
+            <select class="form-control" ng-model="useSys.org_code" readonly>
+                <option ng-repeat="name in org_names" class="center-detail" value="{{name.org_code}}">{{name.org_name}}</option>
             </select>
-        </td>
-        <th class="list-header-option text-center">
-            이용기관 현장 명
-        </th>
-        <td>
-            [자동생성]
         </td>
     </tr>
     <tr>
@@ -115,7 +65,7 @@
             사용시스템 명
         </th>
         <td colspan="3">
-            <textarea style="width: 100%"></textarea>
+            <input type="text" class="form-control" ng-model="useSys.sys_name">
         </td>
     </tr>
     <tr>
@@ -123,10 +73,10 @@
             참고사항
         </th>
         <td colspan="2">
-            <textarea style="width: 100%"></textarea>
+            <wysiwyg textarea-id="question" id="wys" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required  ng-model="useSys.sys_notice" enable-bootstrap-title="true"></wysiwyg>
         </td>
         <td>
-            <button type="button" class="btn btn-style" ng-click="">저장
+            <button type="button" class="btn btn-style" ng-click="saveSys()">저장
             </button>
         </td>
     </tr>

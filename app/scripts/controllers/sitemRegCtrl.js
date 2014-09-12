@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('sitemRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout) {
+    .controller('sitemRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
         $scope.dep_names = [];
         $scope.role_names = [];
         var getDataSet = function () {
@@ -165,4 +165,35 @@ angular.module('gntelCqmsApp')
                 $scope.role_names = data;
             });
         }
+
+
+        $scope.exportsProcess = function(){
+            console.log($scope.itemList);
+
+            var item = [['부서코드','부서명','직책코드','직책명','이름','연락처','이메일']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].dep_code);
+                aaa.push($scope.itemList[i].dep_name);
+                aaa.push($scope.itemList[i].role_code);
+                aaa.push($scope.itemList[i].role_name);
+                aaa.push($scope.itemList[i].mem_name);
+                aaa.push($scope.itemList[i].mem_tel);
+                aaa.push($scope.itemList[i].mem_email);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+        };
     });

@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('compRegCtrl', function ($scope, executeResults, $filter, ngTableParams, $http, $timeout) {
         $scope.org_names = [];
 
 
@@ -79,6 +79,36 @@ angular.module('gntelCqmsApp')
         $scope.clearComp = function () {
             $scope.useComp = null;
             $scope.selectedItem = null;
+        };
+
+        $scope.exportsProcess = function(){
+
+            var item = [['기관코드','이용기관명','이용기관 시군구','상세주소','전화번호','FAX','메세지']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].org_code);
+                aaa.push($scope.itemList[i].org_name);
+                aaa.push($scope.itemList[i].city_name);
+                aaa.push($scope.itemList[i].addr_code);
+                aaa.push($scope.itemList[i].org_tel);
+                aaa.push($scope.itemList[i].org_fax);
+                aaa.push($scope.itemList[i].notice);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+
         };
 
 

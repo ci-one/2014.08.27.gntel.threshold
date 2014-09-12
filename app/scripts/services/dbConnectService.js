@@ -295,7 +295,64 @@ angular.module('gntelCqmsApp')
             return deferred.promise;
         };
 
+//시스템 등록 관련
+        executeResults.getSysList = function () {
+            var deferred = $q.defer();
 
+            $http({
+                    method: 'post',
+                    url: '/getSysList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+
+            return deferred.promise;
+        };
+
+        executeResults.insertSys = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/insertSys',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.updateSys = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/updateSys',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.deleteSys = function (sys_code) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/deleteSys',
+                data: {sys_code: sys_code}
+            }).success(function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+            return deferred.promise;
+        };
 
 
 

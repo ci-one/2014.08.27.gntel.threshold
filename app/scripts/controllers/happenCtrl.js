@@ -4,7 +4,7 @@
 
 'use strict';
 angular.module('gntelCqmsApp')
-    .controller('happenCtrl', function ($scope, executeResults, $filter, ngTableParams) {
+    .controller('happenCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
         var qlt_cnt = [];
 
         var getOccurTableList = function () {
@@ -96,4 +96,36 @@ angular.module('gntelCqmsApp')
             });
         };
         getOccurQltCnt();
+
+
+        $scope.exportsProcess = function(){
+            console.log($scope.itemList);
+            var item = [['기관명','횟수','발생일','기준항목','값','소스','타겟','시스템명']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].org_code);
+                aaa.push($scope.itemList[i].count);
+                aaa.push($scope.itemList[i].ocr_date);
+                aaa.push($scope.itemList[i].kind);
+                aaa.push($scope.itemList[i].qlt_code);
+                aaa.push($scope.itemList[i].source);
+                aaa.push($scope.itemList[i].target);
+                aaa.push($scope.itemList[i].system_code);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+
+        };
     });

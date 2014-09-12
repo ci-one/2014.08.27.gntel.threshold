@@ -4,22 +4,19 @@
 'use strict';
 
 angular.module('gntelCqmsApp')
-    .controller('sourceRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
-        $scope.source_codes = [];
+    .controller('sysRegCtrl', function ($scope, executeResults, $filter, ngTableParams,$timeout,$http) {
         var getSrcList = function () {
             executeResults.getUseComp().then(function (data) {
                     $scope.org_names = data;
             }).then(function () {
-                executeResults.getSource().then(function (data) {
-                    for (var i = 0; i < data.length; i++)
-                        $scope.source_codes.push(data[i].source_code);
+                executeResults.getSysList().then(function (data) {
                     $scope.itemList = data;
 
-                    $scope.srcTable = new ngTableParams({
+                    $scope.sysTable = new ngTableParams({
                         page: 1,            // show first page
                         count: 5,
                         sorting: {
-                            org_name: 'desc'     // initial sorting
+                            sys_name: 'desc'     // initial sorting
                         }
                     }, {counts: [],
                         total: $scope.itemList.length, // length of data
@@ -40,12 +37,13 @@ angular.module('gntelCqmsApp')
 
         $scope.exportsProcess = function(){
             console.log($scope.itemList);
-            var item = [['기관코드','이용기관명','소스']];
+            var item = [['이용기관명','시스템 코드','시스템 명','메세지']];
             for(var i=0;i<$scope.itemList.length;i++){
                 var aaa = [];
-                aaa.push($scope.itemList[i].org_code);
                 aaa.push($scope.itemList[i].org_name);
-                aaa.push($scope.itemList[i].source_code);
+                aaa.push($scope.itemList[i].sys_code);
+                aaa.push($scope.itemList[i].sys_name);
+                aaa.push($scope.itemList[i].sys_notice);
                 item.push(aaa);
             }
 
@@ -64,48 +62,51 @@ angular.module('gntelCqmsApp')
         };
 
         var reloadTable = function(){
-            $scope.useSource = null;
-            executeResults.getSource().then(function (data) {
+            $scope.useSys = null;
+            executeResults.getSysList().then(function (data) {
                 $scope.itemList = data;
-                for (var i = 0; i < data.length; i++) {
-                    $scope.source_codes.push(data[i].source_code);
-                }
-                //$scope.updateOrgName();
             }).then(function(){
-                $scope.srcTable.reload()
+                $scope.sysTable.reload()
             });
         };
 
-        $scope.selectSrc = function (index) {
-            if ($scope.srcTable.data[index] == null)
-                $scope.useSource = $scope.itemList[index];
+        $scope.selectSys = function (index) {
+            if ($scope.sysTable.data[index] == null)
+                $scope.selectedItem = $scope.itemList[index];
             else {
-                $scope.useSource = $scope.srcTable.data[index];
+                $scope.selectedItem = $scope.sysTable.data[index];
             }
         };
 
-        $scope.deleteSrc = function (source_code) {
-            executeResults.deleteSource(source_code).then(function () {
+        $scope.deleteSys = function (sys_code) {
+            executeResults.deleteSys(sys_code).then(function () {
                 alert('삭제되었습니다.');
                 reloadTable();
             })
         };
 
-        $scope.viewComp = function (org_code) {
+        $scope.viewSys = function (org_code) {
         };
 
-        $scope.saveSrc = function () {
-            executeResults.insertSource($scope.useSource).then(function () {
-                alert('이용기관을 추가하였습니다.');
-                reloadTable();
-            })
+        $scope.modifySys = function () {
+            $scope.useSys = $scope.selectedItem;
+        };
+        $scope.clearSys = function () {
+            $scope.useSys = null;
+            $scope.selectedItem = null;
+        };
+        $scope.saveSys = function () {
+            if ($scope.useSys.sys_code != null && $scope.useSys.sys_code != '') {
+                executeResults.updateSys($scope.useSys).then(function () {
+                    alert('이용기관이 수정되었습니다.');
+                    reloadTable();
+                });
+            } else {
+                executeResults.insertSys($scope.useSys).then(function () {
+                    alert('이용기관을 추가하였습니다.');
+                    reloadTable();
+                })
+            }
         };
 
-        //자동완성
-        $scope.updateSrcName = function (typed) {
-            $scope.newsource_codes = MovieRetriever.getmovies(typed);
-            $scope.newsource_codes.then(function (data) {
-                $scope.source_codes = data;
-            });
-        }
     });

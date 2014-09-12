@@ -23,7 +23,7 @@ angular.module('gntelCqmsApp')
                 $scope.itemList = data;
                 //$scope.updateOrgName();
             }).then(function () {
-                $scope.ActionRegTable = new ngTableParams({
+                $scope.compTable = new ngTableParams({
                     page: 1,            // show first page
                     count: 5,
                     sorting: {

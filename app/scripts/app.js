@@ -6,7 +6,8 @@ var app = angular.module('gntelCqmsApp', [
     'autocomplete',
     'ngTable',
     'wysiwyg.module',
-    'highcharts-ng'
+    'highcharts-ng',
+    'angularFileUpload'
 ]);
 app.config(function ($routeProvider, $locationProvider) {
         $routeProvider

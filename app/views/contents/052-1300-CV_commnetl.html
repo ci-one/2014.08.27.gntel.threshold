@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
+
 <style>
     .text3 {
         font-size: 14px;
@@ -23,84 +24,29 @@
                     <span class="text3">　<img src="images/icon/bullet01.png">  액션 등록 현황</span>
                 </div>
                 <div class="pull-right" style="float:left;">
-                    <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                    <button type="button" class="btn btn-style" ng-click="exportsProcess1()">액셀로 내보내기
                     </button>
                 </div>
             </div>
             <div style="overflow-y: scroll;height: 150px">
-                <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-                    <thead>
-                    <tr>
-                        <th class="list-header-option">
-                            임계치 관리 항목 ▣
-                        </th>
-                        <th class="list-header-option">
-                            품질 항목 ▣
-                        </th>
-                        <th class="list-header-option">
-                            액션 명 ▣
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center list-contents-option">
-                    <tr>
-                        <td>
-                            음성품질 R값
+                <table ng-table="actTable" class="table table-bordered">
+                    <tr ng-repeat="act in $data" ng-click="selectAct($index); act.$selected = !act.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': act.$selected}">
+                        <td data-title="'임계치관리 항목'" sortable="'kind'">
+                            {{act.kind}}
                         </td>
-                        <td>
-                            Fatal
+                        <td data-title="'품질 항목'" sortable="'qlevel'">
+                            {{act.qlevel}}
                         </td>
-                        <td>
-                            경보
+                        <td data-title="'액션 명'" sortable="'comm_name'">
+                            {{act.comm_name}}
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            음성품질 R값
-                        </td>
-                        <td>
-                            Critical
-                        </td>
-                        <td>
-                            경보
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            음성품질 R값
-                        </td>
-                        <td>
-                            Major
-                        </td>
-                        <td>
-                            문자발송
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            음성품질 R값
-                        </td>
-                        <td>
-                            Minor
-                        </td>
-                        <td>
-                            이메일전송
-                        </td>
-                    </tr>
-                    </tbody>
-
                 </table>
             </div>
             <p></p>
-
             <div class="row clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-base" ng-click="">삭제
-                    </button>
-                    <button type="button" class="btn btn-base" ng-click="">수정
-                    </button>
-                    <button type="button" class="btn btn-style" ng-click="">열람
-                    </button>
+
                 </div>
             </div>
         </div>
@@ -108,7 +54,7 @@
         <p></p>
 
         <div class="list-header-option">
-            <span class="text3"> <img src="images/icon/bullet01.png" style="padding-left:15px;"> 액션 코멘트 등록.수정.삭제</span>
+            <span class="text3"> <img src="images/icon/bullet01.png" style="padding-left:15px;"> 액션 코멘트 등록.삭제</span>
         </div>
         <table class="table tb-list remove-margin contents-center">
             <tbody>
@@ -117,19 +63,19 @@
                     임계치 관리항목
                 </th>
                 <td>
-                    음성품질 R값
+                    <input type="text" class="form-control" readonly value="{{selectedItem.kind}}">
                 </td>
                 <th class="list-header-option text-center">
                     품질 등급
                 </th>
                 <td>
-                    Fatal
+                    <input type="text" class="form-control" readonly value="{{selectedItem.qlevel}}">
                 </td>
                 <th class="list-header-option text-center">
                     액션 명
                 </th>
                 <td>
-                    경보
+                    <input type="text" class="form-control" readonly value="{{selectedItem.action_name}}">
                 </td>
             </tr>
             <tr>
@@ -137,21 +83,29 @@
                     코멘트 형태
                 </th>
                 <td>
-                    <input class="form-control input-sm" type="text" placeholder="메세지/음성">
+                    <select class="form-control" ng-model="selectedItem.comm_type" readonly>
+                        <option ng-repeat="name in comm_names" class="center-detail" value="{{name.comm_type}}">{{name.comm_name}}</option>
+                    </select>
                 </td>
                 <th class="list-header-option text-center">
                     음성파일
                 </th>
-                <td colspan="3">
-                    <input type="file">
+                <td colspan="3" ng-if="selectedItem.comm_type=='01'">
+                    파일등록 불가
                 </td>
+                <td colspan="3" ng-if="selectedItem.comm_type!='01'">
+                    <input type="file"  ng-file-select="onFileSelect($files)">
+            </td>
             </tr>
             <tr>
                 <th class="list-header-option text-center">
                     메세지 내용 작성
                 </th>
-                <td colspan="4">
-                    <textarea class="form-control" style="width: 100%; height:150px">
+                <td colspan="4" ng-if="selectedItem.comm_type=='02'">
+                    메세지 등록 불가
+                </td>
+                <td colspan="4" ng-if="selectedItem.comm_type!='02'">
+                    <textarea id="textarea" class="form-control" ng-model="selectedItem.comm_notice" style="width: 100%; height:150px">
                         =========경보 발생 ============
                         '%발생시간'
 
@@ -167,7 +121,11 @@
                     </textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-style" ng-click="">저장
+                    <button type="button" class="btn btn-style" style="margin-top: 50px" ng-click="saveAct()">저장
+                    </button>
+                    <button type="button" class="btn btn-style" style="margin-top: 50px" ng-click="deleteAct(selectedItem.kind,selectedItem.qlevel)">삭제
+                    </button>
+                    <button type="button" class="btn btn-style" style="margin-top: 50px" ng-click="">열람
                     </button>
                 </td>
             </tr>
@@ -179,103 +137,32 @@
                 <span class="text3">　<img src="images/icon/bullet01.png">  액션 코멘트 등록 현황</span>
             </div>
             <div class="pull-right" style="float:left;">
-                <button type="button" class="btn btn-style" ng-click="">액셀로 내보내기
+                <button type="button" class="btn btn-style" ng-click="exportsProcess2()">액셀로 내보내기
                 </button>
             </div>
         </div>
         <div style="overflow-y: scroll;height: 150px">
-            <table class="table tb-list table-hover table-condensed table-bordered list-option text-center">
-                <thead>
-                <tr>
-                    <th class="list-header-option">
-                        임계치 관리 항목 ▣
-                    </th>
-                    <th class="list-header-option">
-                        품질 항목 ▣
-                    </th>
-                    <th class="list-header-option">
-                        액션 명 ▣
-                    </th>
-                    <th class="list-header-option">
-                        코멘트 형태
-                    </th>
-                    <th class="list-header-option">
-                        코멘트 내용
-                    </th>
-                </tr>
-                </thead>
-                <tbody class="text-center list-contents-option">
-                <tr>
-                    <td>
-                        음성품질 R값
-                    </td>
-                    <td>
-                        Fatal
-                    </td>
-                    <td>
-                        경보
-                    </td>
-                    <td>
-                        파일
-                    </td>
-                    <td>
-                        텍스트 파일명
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        음성품질 R값
-                    </td>
-                    <td>
-                        Critical
-                    </td>
-                    <td>
-                        경보
-                    </td>
-                    <td>
-                        파일
-                    </td>
-                    <td>
-                        텍스트 파일명
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        음성품질 R값
-                    </td>
-                    <td>
-                        Major
-                    </td>
-                    <td>
-                        문자발송
-                    </td>
-                    <td>
-                        파일
-                    </td>
-                    <td>
-                        텍스트 파일명
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        음성품질 R값
-                    </td>
-                    <td>
-                        Minor
-                    </td>
-                    <td>
-                        이메일전송
-                    </td>
-                    <td>
-                        파일
-                    </td>
-                    <td>
-                        텍스트 파일
-                    </td>
-                </tr>
-                </tbody>
-
-            </table>
+            <div style="overflow-y: scroll;height: 150px">
+                <table ng-table="actedTable" class="table table-bordered">
+                    <tr ng-repeat="acted in $data" ng-click="selectActed($index); acted.$selected = !acted.$selected;" style="cursor:pointer" class="text-center" ng-class="{'active': acted.$selected}">
+                        <td data-title="'임계치관리 항목'" sortable="'kind'">
+                            {{acted.kind}}
+                        </td>
+                        <td data-title="'품질 항목'" sortable="'qlevel'">
+                            {{acted.qlevel}}
+                        </td>
+                        <td data-title="'액션 명'" sortable="'comm_name'">
+                            {{acted.comm_name}}
+                        </td>
+                        <td data-title="'첨부파일 명'" sortable="'comm_file'">
+                            {{acted.comm_file}}
+                        </td>
+                        <td data-title="'메세지'" sortable="'comm_notice'">
+                            {{acted.comm_notice}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <!-- contents ▲ -->

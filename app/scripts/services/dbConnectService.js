@@ -1,6 +1,6 @@
 
 angular.module('gntelCqmsApp')
-    .factory('executeResults', function ($http, $q) {
+    .factory('executeResults', function ($http, $q, $upload) {
         var executeResults = {};
 
         //이용기관 등록 관련
@@ -354,6 +354,105 @@ angular.module('gntelCqmsApp')
             return deferred.promise;
         };
 
+        //액션코멘트 등록 관련
+        executeResults.actList = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/actList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.actedList = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/actedList'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+        executeResults.actData = function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/actData'
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.insertAct = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/insertAct',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.updateAct = function (inputData) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/updateAct',
+                data: inputData
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.deleteAct = function (kind,qlevel) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'post',
+                url: '/deleteAct',
+                data: {kind: kind,qlevel:qlevel}
+            }).success(function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+            return deferred.promise;
+        };
+
+        executeResults.insertF = function(filess){
+            var deferred = $q.defer();
+            var fname='';
+            var $file = filess[0];
+            $upload.upload({
+                url: '/uploadFile',
+                file: $file,
+                progress: function(e){}
+            }).then(function(data) {
+                fname=data.data;
+                deferred.resolve(fname);
+            },function(data){
+                alert(data.data);
+            });
+
+            ;
+            return deferred.promise;
+        };
 
         //채영범 사원원 TEST 프로그래밍
         executeResults.insertStanRegItem = function (inputData) {

@@ -5,37 +5,29 @@
 
 angular.module('gntelCqmsApp')
     .controller('commentRegCtrl', function ($scope, executeResults, $filter, ngTableParams) {
-        $scope.org_names = [];
 
 
-        var reloadTable = function(){
-            $scope.selectedItem = null;
-            $scope.org_names = [];
-            $scope.useComp = null;
-            executeResults.getUseComp().then(function (data) {
-                $scope.itemList = data;
-                for (var i = 0; i < data.length; i++) {
-                    $scope.org_names.push(data[i].org_name);
-                }
-                //$scope.updateOrgName();
-            }).then(function(){
-                $scope.compTable.reload()
-            });
+        var filess;
+        $scope.onFileSelect = function($files) {
+            filess = $files;
         };
 
-        var getCompList = function () {
-            executeResults.getUseComp().then(function (data) {
+        var getComm = function(){
+            executeResults.actData().then(function(data){
+                $scope.comm_names = data;
+            })
+        }
+        getComm();
+        $scope.comm_notice = $('#textarea').val();
+        var actList = function () {
+            executeResults.actList().then(function (data) {
                 $scope.itemList = data;
-                for (var i = 0; i < data.length; i++) {
-                    $scope.org_names.push(data[i].org_name);
-                }
-                //$scope.updateOrgName();
             }).then(function(){
-                $scope.compTable = new ngTableParams({
+                $scope.actTable = new ngTableParams({
                     page: 1,            // show first page
                     count: 5,
                     sorting: {
-                        org_name: 'desc'     // initial sorting
+                        kind: 'desc'     // initial sorting
                     }
                 }, {counts: [],
                     total: $scope.itemList.length, // length of data
@@ -50,58 +42,155 @@ angular.module('gntelCqmsApp')
                 });
             });
         };
-        getCompList();
+        actList();
 
-        $scope.selectComp = function (index) {
-            if ($scope.compTable.data[index] == null)
+        $scope.selectAct = function (index) {
+            if ($scope.actTable.data[index] == null)
                 $scope.selectedItem = $scope.itemList[index];
             else {
-                $scope.selectedItem = $scope.compTable.data[index];
+                $scope.selectedItem = $scope.actTable.data[index];
+            }
+
+        };
+        $scope.selectActed = function (index) {
+            if ($scope.actedTable.data[index] == null)
+                $scope.selectedItem = $scope.itemList[index];
+            else {
+                $scope.selectedItem = $scope.actedTable.data[index];
             }
 
         };
 
-        $scope.deleteComp = function (org_code) {
-
-            executeResults.deleteUseComp(org_code).then(function () {
+        $scope.deleteAct = function (kind,qlevel) {
+            executeResults.deleteAct(kind,qlevel).then(function () {
                 alert('삭제되었습니다.');
                 reloadTable();
             })
         };
 
-        $scope.viewComp = function (org_code) {
+        $scope.viewAct = function (org_code) {
         };
 
-        $scope.modifyComp = function () {
-            $scope.useComp = $scope.selectedItem;
+        $scope.modifyAct = function () {
+            $scope.useAct = $scope.selectedItem;
         };
 
-        $scope.clearComp = function () {
-            $scope.useComp = null;
+        $scope.clearAct = function () {
+            $scope.useAct = null;
             $scope.selectedItem = null;
         };
 
 
-        $scope.saveComp = function () {
-            if ($scope.useComp.org_code != null && $scope.useComp.org_code != '') {
-                executeResults.updateUseComp($scope.useComp).then(function () {
-                    alert('이용기관이 수정되었습니다.');
-                    reloadTable();
-                });
-            } else {
-                executeResults.insertUseComp($scope.useComp).then(function () {
-                    alert('이용기관을 추가하였습니다.');
+        $scope.saveAct = function () {
+            if(filess==null || filess==''){
+                alert('comes hsere1');
+                executeResults.insertAct($scope.selectedItem).then(function () {
+                    alert('액션코멘트가 추가되었습니다.');
                     reloadTable();
                 })
             }
+            else{
+                executeResults.insertF(filess).then(function(data){
+
+                    $scope.selectedItem.comm_file = data;
+                    executeResults.insertAct($scope.selectedItem).then(function () {
+                        alert('액션코멘트가 추가되었습니다.');
+                        reloadTable();
+                    })
+                });
+            }
+
         };
 
-        //자동완성
-        $scope.updateOrgName = function (typed) {
-            // MovieRetriever could be some service returning a promise
-            $scope.neworg_names = MovieRetriever.getmovies(typed);
-            $scope.neworg_names.then(function (data) {
-                $scope.org_names = data;
+        var reloadTable = function(){
+            $scope.selectedItem = null;
+            $scope.org_names = [];
+            $scope.useComp = null;
+            executeResults.actedList().then(function (data) {
+                $scope.actedList = data;
+            }).then(function(){
+                $scope.actedTable.reload()
             });
-        }
+        };
+
+        var actedList = function () {
+            executeResults.actedList().then(function (data) {
+                $scope.actedList = data;
+            }).then(function(){
+                $scope.actedTable = new ngTableParams({
+                    page: 1,            // show first page
+                    count: 5,
+                    sorting: {
+                        kind: 'desc'     // initial sorting
+                    }
+                }, {counts: [],
+                    total: $scope.actedList.length, // length of data
+                    getData: function ($defer, params) {
+                        // use build-in angular filter
+                        var orderedData = params.sorting() ?
+                            $filter('orderBy')($scope.actedList, params.orderBy()) :
+                            $scope.actedList;
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+            });
+        };
+        actedList();
+
+
+        $scope.exportsProcess1 = function(){
+            console.log($scope.itemList);
+
+            var item = [['임계치관리 항목','품질 항목','액션 명']];
+            for(var i=0;i<$scope.itemList.length;i++){
+                var aaa = [];
+                aaa.push($scope.itemList[i].kind);
+                aaa.push($scope.itemList[i].qlevel);
+                aaa.push($scope.itemList[i].comm_name);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+        };
+
+
+        $scope.exportsProcess2 = function(){
+            console.log($scope.actedList);
+
+            var item = [['임계치관리 항목','품질 항목','액션 명','첨부파일 명','메세지']];
+            for(var i=0;i<$scope.actedList.length;i++){
+                var aaa = [];
+                aaa.push($scope.actedList[i].kind);
+                aaa.push($scope.actedList[i].qlevel);
+                aaa.push($scope.actedList[i].comm_name);
+                aaa.push($scope.actedList[i].comm_file);
+                aaa.push($scope.actedList[i].comm_notice);
+                item.push(aaa);
+            }
+
+            $timeout(function(){
+                $http({
+                    method: 'post',
+                    url: '/abcd',
+                    data: {itemList: item}
+                }).success(function(){
+                    var link = document.createElement("a");
+                    link.download = name;
+                    link.href = '/docu/savedabcd.xlsx';
+                    link.click();
+                })
+            },300);
+        };
     });

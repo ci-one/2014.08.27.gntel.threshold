@@ -7,12 +7,23 @@ angular.module('gntelCqmsApp')
 
         $scope.item_names = [];
 
+        var reloadTable = function(){
+            $scope.selectedItem = null;
+            executeResults.getStandardReg().then(function (data) {
+                $scope.itemList = data;
+
+                //$scope.updateOrgName();
+            }).then(function(){
+                $scope.stanRegTable.reload()
+            });
+        };
+
 
         var getStandardRegList = function () {
             executeResults.getStandardReg().then(function (data) {
                 $scope.itemList = data;
                 for (var i = 0; i < data.length; i++) {
-                    $scope.item_names.push(data[i].item_name);
+                    $scope.item_names.push(data[i].thrs_item_name);
                 }
                 //$scope.updateOrgName();
             }).then(function () {
@@ -46,14 +57,31 @@ angular.module('gntelCqmsApp')
         };
 
         $scope.saveStanReg = function () {
-            alert("scope:" + $scope.stanReg.item_name+$scope.stanReg.qlt_code);
+            alert("scope:" + $scope.stanReg.item_code+$scope.stanReg.qlt_code);
 
             //executeResults.insertStanRegItem($scope.stanReg).then(function(){
 
-                executeResults.insertStanReg($scope.stanReg);
+                executeResults.insertStanReg($scope.stanReg).then(function(){
+                    reloadTable();
+                });
            // });
 
         };
+
+        $scope.selectItem = function (index) {
+            if ($scope.stanRegTable.data[index] == null)
+                $scope.selectedItem = $scope.itemList[index];
+            else {
+                $scope.selectedItem = $scope.stanRegTable.data[index];
+            }
+
+        };
+        $scope.saveActionReg = function (index) {
+            executeResults.insertStanReg(index).then(function(){
+                
+            });
+        };
+
 
         //자동완성
         $scope.updateItemName = function (typed) {

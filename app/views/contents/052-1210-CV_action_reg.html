@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="../../styles/layout/contents.css">
 
-<div ng-controller="actionRegCtrl" class="contents-layout">
+<div  class="contents-layout">
 
 
     <!-- contents ▼ -->
     <div class="contents-background">
         <!-- search ▼ -->
-        <div style="overflow-y: scroll;height: 180px">
+        <div ng-controller="standardRegCtrl">
+        <div  style="overflow-y: scroll;height: 180px">
             <div class="list-header-option"><span class="text3">　임계치 품질 현황</span></div>
-            <table ng-table="ActRegTable"
+           <!-- <table ng-table="ActRegTable"
                    class="table tb-list table-hover table-condensed table-bordered list-option text-center">
                 <thead>
                 <tr ng-repeat="item in $data" style="cursor:pointer" class="text-center">
@@ -25,29 +26,44 @@
 
 
                 </tbody>
-
+            </table>-->
+            <table   ng-table="stanRegTable"  class="table tb-list table-hover table-condensed table-bordered list-option text-center">
+                <tbody class="text-center list-contents-option">
+                <tr ng-repeat="item in $data" style="cursor:pointer" class="text-center"
+                    ng-click="selectItem($index); item.$selected = !item.$selected;" ng-class="{'active': item.$selected}">
+                    <td data-title="' 관리항목'" sortable="'org_code'">
+                        {{item.thrs_item_name}}
+                    </td>
+                    <td data-title="'품질등급'" sortable="'system_code'">
+                        {{item.qlt_name}}
+                    </td>
+                </tr>
+                </tbody>
             </table>
+
             <!-- list ▲ -->
         </div>
         <!-- search ▲ -->
         <p></p>
 
-        <div ng-if="detail==true">
+        <!--        <div ng-if="detail==true">-->
+        <div>
             <div class="list-header-option"><span class="text3">　임계치 품질 액션 등록.수정.삭제</span></div>
-            <table ng-table="ActRegListTable" class="table tb-list remove-margin contents-center">
+            <table class="table tb-list remove-margin contents-center">
                 <tbody>
                 <tr>
-                    <th class="list-header-option text-center">
+                    <th style="width:25%" class="list-header-option text-center">
                         임계치 관리항목
                     </th>
-                    <td>
-                        음성품질 R값
+                    <td style="width:25%">
+                       {{selectedItem.thrs_item_name}}
+
                     </td>
-                    <th class="list-header-option text-center">
+                    <th style="width:25%" class="list-header-option text-center">
                         품질 등급
                     </th>
-                    <td>
-                        Fatal
+                    <td style="width:25%">
+                        {{selectedItem.qlt_name}}
                     </td>
                 </tr>
                 <tr>
@@ -55,23 +71,23 @@
                         품질액션 등급 　
                     </th>
                     <td>
-                        <select ng-options="" class="form-control">
+                        <select ng-model="" class="form-control">
                             <option>코드 | 액션 명</option>
-                            <option value="all">1 | 경보</option>
-                            <option value="all">2 | 문자발송</option>
-                            <option value="all">3 | 이메일전송</option>
+                            <option value="1">1 | 경보</option>
+                            <option value="2">2 | 문자발송</option>
+                            <option value="3">3 | 이메일전송</option>
                             <option value="all">◎ 신규등록</option>
                         </select>
                     </td>
                     <td colspan="2">
-                        <button type="button" class="btn btn-style" ng-click="">저장
+                        <button type="button" class="btn btn-style" ng-click="save(selectedItem.action_seq)">저장
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-
+        </div>
         <p></p>
         <!-- list ▼ -->
         <div>

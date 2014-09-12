@@ -14,8 +14,14 @@
                     임계치 관리항목
                 </th>
                 <td>
-                    <autocomplete  ng-model="item_name" data="item_names"
-                                   on-type="updateItemName" click-activation=true></autocomplete>
+             <!--       <autocomplete  ng-model="item_name" data="item_names"
+                                   on-type="updateItemName" click-activation=true></autocomplete>-->
+                    <select ng-options="" ng-model="stanReg.item_code" class="form-control">
+                        <option> 관리항목 코드 |  관리항목 명</option>
+                        <option value="01">01 R</option>
+                        <option value="02">02 MOS</option>
+                        <option value="03">03 Q</option>
+                    </select>
                 </td>
 
                 <th class="list-header-option text-center">
@@ -24,13 +30,13 @@
                 <td>
                     <select ng-options="" ng-model="stanReg.qlt_code" class="form-control">
                         <option>품질등급 코드 | 품질등급 명</option>
-                        <option value="1">Fatal</option>
-                        <option value="2">Critical</option>
-                        <option value="3">Major</option>
-                        <option value="4">Minor</option>
-                        <option value="5">Warning</option>
-                        <option value="6">Info</option>
-                        <option value="7">Normal</option>
+                        <option value="1">1 Fatal</option>
+                        <option value="2">2 Critical</option>
+                        <option value="3">3 Major</option>
+                        <option value="4">4 Minor</option>
+                        <option value="5">5 Warning</option>
+                        <option value="6">6 Info</option>
+                        <option value="7">7 Normal</option>
                     </select>
             </tr>
             <tr>

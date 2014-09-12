@@ -8,9 +8,6 @@ angular.module('gntelCqmsApp')
         var getActionRegList = function () {
             executeResults.getActionReg().then(function (data) {
                 $scope.itemList = data;
-                for (var i = 0; i < data.length; i++) {
-                    $scope.org_names.push(data[i].org_name);
-                }
                 //$scope.updateOrgName();
             }).then(function () {
                 $scope.compTable = new ngTableParams({
@@ -34,6 +31,11 @@ angular.module('gntelCqmsApp')
         };
         getActionRegList();
 
+        $scope.saveActReg = function (action_code) {
+            executeResults.updateActReg(action_code).then(function () {
+                alert('저장되었습니다.');
+            })
+        };
 
         $scope.deleteActReg = function (org_code) {
 
@@ -41,6 +43,15 @@ angular.module('gntelCqmsApp')
                 alert('삭제되었습니다.');
             })
         };
+        $scope.selectComp = function (index) {
+            if ($scope.compTable.data[index] == null)
+                $scope.selectedItem = $scope.itemList[index];
+            else {
+                $scope.selectedItem = $scope.compTable.data[index];
+            }
+
+        };
+
 
 
     });
